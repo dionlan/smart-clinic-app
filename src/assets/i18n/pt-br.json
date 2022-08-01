@@ -1,0 +1,77 @@
+{
+  "app": {
+    "title": "SMART-CLINIC"
+  },
+  "auth": {
+    "main": {
+      "header": {
+        "title": "Sistema de Gerenciamento de Clínicas"
+      },
+      "login": {
+        "subtitle": "Acesso restrito",
+        "label": {
+          "login": "Login",
+          "password": "Senha"
+        },
+        "button": "Entrar",
+        "reset-password": "Esqueceu sua senha?"
+      },
+      "internal-error": {
+        "subtitle": "Problema Interno. A culpa não é sua.",
+        "first": {
+          "text1": "Detectamos um problema interno ao solicitar seu pedido.",
+          "text2": "Pedimos desculpas pelo incoveniente."
+        },
+        "second": {
+          "text1": "Por favor, tente novamente em alguns intantes ou se preferir, entre em contato com o nosso suporte",
+          "text2": "centraldeservicos@sefaz.ma.gov.br"
+        },
+        "enter": "Entrar"
+      }
+    }
+  },
+  "home": {
+    "index": {
+      "breadcrumb": "sgc"
+    },
+    "breadcrumb": "Início",
+    "header": {
+      "title": "Sistema de Gerenciamento e Configuração",
+      "menu": {
+        "user-data": "Meus dados",
+        "change-password": "Alterar senha",
+        "logout": "Sair"
+      }
+    },
+    "side-menu": {
+      "home": "Início",
+      "admin": {
+        "title": "Administração",
+        "users": "Usuários",
+        "profiles": "Perfis"
+      },
+      "demand": {
+        "title": "Demandas",
+        "demand-management": "Gerenciamento de demandas"
+      },
+      "website": {
+        "title": "Portal",
+        "menu": "Menu",
+        "content": "Conteúdo",
+        "services": "Serviços",
+        "programs": "Programas",
+        "campaigns": "Campanhas",
+        "repository": "Repositório",
+        "style": "Estilo",
+        "tax-calendar": "Calendário",
+        "contacts": "Contatos",
+        "tags": "Etiquetas"
+      },
+      "faq": {
+        "title": "FAQ",
+        "questions": "Perguntas",
+        "categories": "Categorias"
+      }
+    }
+  }
+}

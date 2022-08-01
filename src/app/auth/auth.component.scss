@@ -1,0 +1,143 @@
+.container-body {
+  background-color: #fff;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #053858, #029b8e);
+}
+
+.container-body .container-main {
+  background-color: #fff;
+  height: 680px;
+  width: 790px;
+  border-radius: 30px;
+  box-shadow: 6px 5px 6px 2px rgb(0 0 0 / 20%)
+}
+
+.container-body .container-main .container-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 680px;
+  float: left;
+}
+
+.container-body .container-main .container-form .header-title{
+  font-family: 'Roboto';
+  font-size: 22px;
+  color: #074368;
+  font-weight: bold;
+}
+
+.container-body .container-image {
+  width: 50%;
+  display: flex;
+  height: 680px;
+  flex-direction: column;
+  background-color: blue;
+  border-radius: 30px;
+  background: url('../../assets/img/auth/img-login.jpeg') -170px 0px;
+  background-size: 225% 100%;
+}
+
+
+@media screen and (max-width: 680px) {
+  .container-body .container-image {
+    display: none;
+  }
+  .container-body .container-form {
+    width: 100% !important;
+  }
+  .container-body .container-main {
+    width: 400px !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.main {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main .header {
+  display: flex;
+  align-items: center;
+}
+
+.main .header .logo {
+  color: #468fb3;
+  margin-right: 20px;
+  font-size: 5vw;
+}
+
+.main .header .header-title {
+  font-size: 3vw;
+  font-weight: bold;
+  color: #074368;
+}
+
+.main .footer {
+  display: flex;
+  align-items: center;
+  color: #1a1a27;
+}
+
+.main .footer .logo {
+  margin-right: 10px;
+  height: 5vw;
+}
+
+.main .footer p {
+  margin-bottom: 0;
+  font-size: 1vw;
+}
+
+.footer .footer-title {
+  font-weight: bold;
+}
+
+.cover {
+  padding: 0;
+  display: flex;
+  height: 100vh;
+}
+
+.cover .cover-title {
+  font-size: 2vw;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  padding-left: 3vw;
+  padding-top: 3vh;
+}
+
+@media screen and (max-width: 992px) {
+  .main .header .logo {
+    font-size: 10vw;
+  }
+
+  .main .header .header-title {
+    font-size: 8vw;
+  }
+
+  .main .footer .logo {
+    height: 10vw;
+  }
+
+  .main .footer p {
+    margin-bottom: 0;
+    font-size: 3vw;
+  }
+
+  .cover {
+    display: none;
+  }
+}
