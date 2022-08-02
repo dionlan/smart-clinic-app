@@ -12,7 +12,7 @@ import { Token } from '../token';
   providedIn: 'root'
 })
 export class AuthService {
-  public static TOKEN: string = 'Authorization';
+  public static TOKEN: string = 'accessToken';
 
   url: string;
   helper : JwtHelperService = new JwtHelperService();
@@ -22,7 +22,7 @@ export class AuthService {
   isLoggedIn$ = this.loggedIn.asObservable();
 
   constructor(private router: Router, private httpClient: HttpClient) {
-    this.url = environment.baseUrl + '/login';
+    this.url = environment.baseUrl + '/autenticacao/login';
   }
 
   public setSubjectEmail(value : any){
@@ -41,9 +41,11 @@ export class AuthService {
   }*/
 
   public login(credentials: Credentials): Observable<any> {
+    console.log(this.url, credentials)
     return this.httpClient.post(this.url, credentials).pipe(
       tap((res: any) => {
-        localStorage.setItem(AuthService.TOKEN, res.authtoken);
+        console.log('RESPOSTA: ', res)
+        localStorage.setItem(AuthService.TOKEN, res.data.accessToken);
       })
     );
   }

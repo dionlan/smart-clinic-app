@@ -1,0 +1,129 @@
+section.new, section.edit {
+  padding: 10px;
+}
+
+.new form, .edit form {
+  text-align: left;
+}
+
+.new .fields, .edit .fields {
+  color: #707070;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.new .actions, .edit .actions {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #acacac;
+}
+
+.new button i, .edit button i {
+  flex-grow: 0;
+}
+.new button span, .edit button span {
+  flex-grow: 1;
+}
+
+.new .submit, .edit .submit {
+  background-color: #0f73ee;
+  margin-right: 20px;
+}
+
+.new .cancel, .edit .cancel {
+  color: #5b6c79;
+  background-color: #eef0f8;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.edit .delete {
+  color: #eef0f8;
+  background-color: #5b6c79;
+  margin-right: 20px;
+}
+
+.edit input,
+.edit select,
+.edit .status {
+  font-size: 14px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.p-chips .p-chips-multiple-container {
+  width: 100%;
+}
+
+.p-chips .p-chips-multiple-container .p-chips-token {
+  margin-bottom: 5px;
+}
+
+p-editor {
+  border: none !important;
+  padding: 0 !important;
+}
+
+.p-inputtext {
+  border: 1px solid #ced4da;
+}
+
+.reset {
+  color: #5F656B !important;
+  border-color: #468FB3;
+  text-align: center;
+}
+.reset:hover {
+  color: #494e53;
+}
+.h-45 {
+  height: 45% !important;
+}
+
+.h-60 {
+  height: 60% !important;
+}
+
+.btn-primary-custom {
+  color: #fff;
+  background: #468FB3;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.text-right {
+  text-align: right !important;;
+}
+
+.p-multiselect .p-multiselect-label {
+  padding: 0 !important;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.info-circle-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-button {
+  background-color: #468FB3 !important;
+  border-color: #468FB3 !important;
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.875rem !important;
+  border-radius: 0.2rem !important;
+}
+
+form label {
+  font-size: 14px !important;
+}

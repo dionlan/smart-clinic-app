@@ -9,6 +9,7 @@
       },
       "login": {
         "subtitle": "Acesso restrito",
+        "info": "Informe os dados para realizar o Login",
         "label": {
           "login": "Login",
           "password": "Senha"

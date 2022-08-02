@@ -1,13 +1,13 @@
 <form (submit)="login()" [formGroup]="loginForm" class="login">
 
   <p class="subtitle">
-    {{ 'auth.main.login.subtitle' | translate}}
+    {{ 'auth.main.login.info' | translate}}
   </p>
 
   <div class="mb-3">
     <label for="inputLogin" class="form-label">{{ 'auth.main.login.label.login' | translate }}</label>
     <input class="form-control" id="inputLogin" formControlName="email" [value]="loginForm.get('email')?.value"
-    placeholder="{{ 'auth.main.login.label.login' | translate }}" maxlength="11"/>
+    placeholder="{{ 'auth.main.login.label.login' | translate }}" maxlength="60"/>
   </div>
 
   <div class="mb-3">

@@ -1,0 +1,37 @@
+$font-color: #ABBAC7;
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link {
+  padding: .65rem .75rem;
+  color: $font-color;
+};
+
+.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested .nav-link {
+  padding: .4rem .75rem;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav-link:hover {
+  color: #FFFFFF;
+}
+
+.sb-sidenav-menu {
+  padding-top: 1rem;
+  font-size: .90rem;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
+  min-width: 1.15rem;
+  color: $font-color;
+  font-size: 1rem;
+}
+
+.sb-sidenav-dark {
+  background-color: $base-color-sidenav;
+}
+
+.bg-dark {
+  background-color: $base-color !important;
+}
+
+.sb-sidenav-dark .sb-sidenav-footer {
+  background-color: $base-color-sidenav;
+}

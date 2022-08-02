@@ -1,0 +1,184 @@
+.p-datatable .p-paginator-bottom {
+  justify-content: left;
+  border-bottom: none;
+  color: #acacac;
+  padding: 0.5rem 0;
+  margin-top: 30px;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  color: rgb(0 0 0 / 70%);
+}
+
+.p-datatable-tbody > tr {
+  font-size: 14px;
+  color: #acacac;
+  border-bottom: 1px solid #acacac;
+}
+
+.p-paginator-current {
+  font-size: 14px;
+  color: #acacac;
+}
+
+.p-link {
+  font-size: 14px;
+  color: #acacac;
+}
+
+.p-paginator-rpp-options {
+  border-color: #acacac;
+}
+
+.p-dropdown-label {
+  font-size: 14px;
+  color: #acacac;
+}
+
+.search,
+.results {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.search form {
+  text-align: left;
+}
+
+.search .fields {
+  margin-top: 20px;
+  color: #707070;
+  font-size: 14px;
+}
+
+.search input,
+.search select,
+.search .status {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.search .status {
+  padding: 6px 0;
+}
+
+.search .form-check-input {
+  margin: 0;
+}
+
+.search .form-check-label {
+  margin-left: 5px;
+}
+
+.search .option {
+  display: flex;
+  align-items: center;
+}
+
+.search .actions {
+  margin: 20px 0;
+  padding-top: 20px;
+  border-top: 1px solid #acacac;
+}
+
+.search button {
+  width: 300px;
+  color: #ffffff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.search button i {
+  flex-grow: 0;
+}
+.search button span {
+  flex-grow: 1;
+}
+
+.search .submit {
+  background-color: #468fb3;
+}
+
+.search .btn-new {
+  background-color: #00be85;
+  float: right;
+}
+
+.table-header {
+  font-size: 14px;
+  color: #333333;
+  border-bottom: 1px solid #acacac;
+}
+
+.table-row {
+  font-size: 14px;
+  color: #4f565d;
+  border-bottom: 1px solid #acacac;
+}
+
+.col-active {
+  width: 120px;
+}
+
+.col-actions {
+  width: 150px;
+}
+
+.results .actions {
+  align-items: center;
+  justify-content: space-between;
+}
+.results .actions a {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.edit {
+  color: #668aff;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.activate {
+  color: #00be85;
+  cursor: pointer;
+}
+
+.inactivate {
+  color: #ff8c00;
+  cursor: pointer;
+}
+
+.destroy {
+  color: #b44c31;
+  cursor: pointer;
+}
+
+.p-paginator {
+  border: none;
+}
+
+.actions a.edit {
+  position: relative;
+  top: 2px;
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+a {
+  cursor: pointer;
+}
+
+.button-grid {
+  color: #7E8299;
+  cursor: pointer;
+  font-size: 1.5em;
+  padding: 4px;
+}
+
+.button-grid:hover {
+  color: #468FB3;
+}
