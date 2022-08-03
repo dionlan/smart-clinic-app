@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -16,6 +15,7 @@ import { registerLocaleData } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeModule } from './home/home.module';
+import { MenuService } from './shared/menu/menu.service';
 
 registerLocaleData(ptBr)
 
@@ -39,14 +39,12 @@ registerLocaleData(ptBr)
     AuthModule,
     CoreModule,
     AppRoutingModule,
-
     FontAwesomeModule,
-
-
   ],
   providers: [
     Title,
     TranslateService,
+    MenuService,
     {
       provide: APP_INITIALIZER,
       useFactory: ApplicationInitializerFactory,

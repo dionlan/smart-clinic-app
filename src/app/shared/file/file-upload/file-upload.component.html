@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-6" *ngIf="fileImage">
+    <div class="card mb-3 mt-2">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <img class="img-fluid" [width]="previewWidth" [height]="previewHeight" [src]="srcImage"
+              alt="{{fileImage?.nomeArquivoOriginal}}" />
+          </div>
+          <div class="col-lg-6 pt-3">{{fileImage?.nomeArquivoOriginal}}</div>
+          <div class="col-lg-6 pt-3">{{fileImage?.tamanho}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="{{classDefault}}">
+    <p-fileUpload #fileUpload [mode]="mode" [accept]="accept" [previewWidth]="previewWidth" [maxFileSize]="maxFileSize"
+      (uploadHandler)="upload($event)" (onRemove)="cancelUpload($event)" [customUpload]="true" [auto]="true"
+      [styleClass]="styleClass" [chooseLabel]="chooseLabel | translate" [chooseIcon]="chooseIcon"
+      [showUploadButton]="false" [showCancelButton]="false"
+      [invalidFileSizeMessageSummary]="'home.files.upload.invalidFileSizeMessageSummary' | translate"
+      [invalidFileSizeMessageDetail]="'home.files.upload.invalidFileSizeMessageDetail' | translate"
+      [invalidFileLimitMessageSummary]="'home.files.upload.invalidFileLimitMessageSummary' | translate"
+      [invalidFileLimitMessageDetail]="'home.files.upload.invalidFileLimitMessageDetail' | translate"
+      [invalidFileTypeMessageSummary]="'home.files.upload.invalidFileTypeMessageSummary' | translate"
+      [invalidFileTypeMessageDetail]="'home.files.upload.invalidFileTypeMessageDetail' | translate">
+      <ng-template let-file pTemplate="file">
+        <div class="row">
+          <div class="col-md-12">
+            <img class="img-fluid" [width]="previewWidth" [height]="previewHeight" [src]="file.objectURL"
+              [alt]="file.name" />
+          </div>
+        </div>
+        <div class="row mt-2 p-fileupload-row">
+          <div class="col-4">
+            <button type="button" class="p-button p-component p-button-icon-only" (click)="cancelUpload($event)">
+              <span class="p-button-icon pi pi-times" aria-hidden="true"></span>
+              <span aria-hidden="true" class="p-button-label">&nbsp;</span>
+            </button>
+          </div>
+          <div class="col-4 pt-3 p-fileupload-filename">{{file.name}}</div>
+          <div class="col-4 pt-3">{{file.size }}</div>
+        </div>
+      </ng-template>
+    </p-fileUpload>
+  </div>
+</div>

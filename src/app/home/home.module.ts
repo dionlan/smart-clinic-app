@@ -1,13 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
-import { HomeRoutingModule } from './home-routing.module';
+import {NgModule} from '@angular/core';
+import {HomeComponent} from './home.component';
+import {SharedModule} from '../shared/shared.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {HomeRoutingModule} from './home-routing.module';
+import {PanelModule} from 'primeng/panel';
+import {IndexComponent} from './modules/index/index.component';
+import {LayoutModule} from './modules/layout/layout.module';
+import {SkeletonModule} from "primeng/skeleton";
+import { MainPanelComponent } from './components/main-panel/main-panel.component';
+
 
 @NgModule({
-  declarations: [ HomeComponent ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule
-  ]
+  declarations: [
+    HomeComponent,
+    IndexComponent,
+    MainPanelComponent
+  ],
+  imports: [SharedModule, NgbModule, HomeRoutingModule, PanelModule, LayoutModule, SkeletonModule],
+  exports: [HomeComponent, MainPanelComponent],
 })
-export class HomeModule { }
+export class HomeModule {}

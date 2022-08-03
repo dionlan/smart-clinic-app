@@ -1,0 +1,17 @@
+<nav id="breadcrumb"
+     class="nav mx-4 mb-5 rounded-bottom shadow-sm border position-fixed top-10 w-auto d-none d-sm-block">
+  <div class="d-flex" style="margin-top: 5px;">
+    <a class="nav-link" disabled>
+      <i class="pi pi-home ms-2 text-dark"></i>
+    </a>
+    <ol class="breadcrumb d-flex px-1 m-0 align-items-center">
+
+      <li class="breadcrumb-item" *ngFor="let menu of menuItems">
+        <i class="fa fa-angle-right"></i>
+        <a class="nav-link" [routerLink]="menu.url">
+          {{ menu.label }}
+        </a>
+      </li>
+    </ol>
+  </div>
+</nav>

@@ -33,9 +33,8 @@
   },
   "home": {
     "index": {
-      "breadcrumb": "sgc"
+      "breadcrumb": "home"
     },
-    "breadcrumb": "Início",
     "header": {
       "title": "Sistema de Gerenciamento e Configuração",
       "menu": {
@@ -51,27 +50,17 @@
         "users": "Usuários",
         "profiles": "Perfis"
       },
-      "demand": {
-        "title": "Demandas",
-        "demand-management": "Gerenciamento de demandas"
+      "clinics": {
+        "title": "Clínicas"
       },
-      "website": {
-        "title": "Portal",
-        "menu": "Menu",
-        "content": "Conteúdo",
-        "services": "Serviços",
-        "programs": "Programas",
-        "campaigns": "Campanhas",
-        "repository": "Repositório",
-        "style": "Estilo",
-        "tax-calendar": "Calendário",
-        "contacts": "Contatos",
-        "tags": "Etiquetas"
+      "doctors": {
+        "title": "Médicos"
       },
-      "faq": {
-        "title": "FAQ",
-        "questions": "Perguntas",
-        "categories": "Categorias"
+      "employees": {
+        "title": "Funcionários"
+      },
+      "patients": {
+        "title": "Pacientes"
       }
     }
   }

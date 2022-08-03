@@ -1,0 +1,42 @@
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark shadow">
+  <!-- Sidebar Toggle-->
+  <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" (click)="toggleMenu()"><i
+      class="fa fa-bars"></i>
+  </button>
+  <!-- Navbar Search-->
+  <div class="navbar-brand  me-0 w-100">
+    <a class="navbar-brand ps-3 text-nowrap w-100 d-none d-sm-block "  style="font-size: 1.5rem; font-weight: bold;"
+    href="index.html">{{ "home.header.title" |
+      translate }}</a>
+  </div>
+  <!-- Navbar-->
+  <div class="nav-content-right">
+    <div>
+      <a style="font-size: 14px;" class="link-user" [routerLink]="['admin', 'usuarios', 'edita', idUsuario]" >
+        {{nomeUsuario }}
+      </a>
+    </div>
+    <div>
+      <a  class="link-user" [routerLink]="['admin', 'usuarios', 'edita', idUsuario]">
+        <img
+        *ngIf="srcImage"
+        class="circular_image"
+        [width]="previewWidth"
+        [height]="previewHeight"
+        [src]="srcImage" />
+        <i *ngIf="!srcImage"
+            style="color: #468FB3; font-size: 24px;"
+            class="fa  fa-user-circle-o">
+        </i>
+      </a>
+    </div>
+    <div>
+      <a  class="link-user" (click)="logout()">
+        <i class="fa fa-sign-out" style="font-size: 1.5rem;" style="color: azure;"></i>
+        <span style="font-size: 14px;">
+          Sair
+        </span>
+      </a>
+    </div>
+  </div>
+</nav>

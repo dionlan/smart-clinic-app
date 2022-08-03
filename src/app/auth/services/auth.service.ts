@@ -7,6 +7,7 @@ import { Credentials } from '../models/credentials.mode';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Token } from '../token';
+import { User } from 'src/app/home/modules/admin/users/user';
 
 @Injectable({
   providedIn: 'root'
@@ -85,5 +86,22 @@ export class AuthService {
     let jwt = localStorage.getItem(AuthService.TOKEN)?.toString();
     let token = this.helper.decodeToken(jwt) as Token
     return token.permissions;
+  }
+
+  public checkUser(loginForm: Credentials): Observable<any> {
+    let jwt = localStorage.getItem(AuthService.TOKEN)?.toString();
+    let token = this.helper.decodeToken(jwt) as Token;
+    //loginForm.id_cliente = token.sub;
+    return this.httpClient.post(this.url+'/check', loginForm).pipe(
+      tap((res: any) => {
+      })
+    );
+  }
+
+  public resetPasswordUser(user: User): Observable<any> {
+    return this.httpClient.post(this.url + '/redefinir-user', user).pipe(
+      tap((res: any) => {
+      })
+    );
   }
 }

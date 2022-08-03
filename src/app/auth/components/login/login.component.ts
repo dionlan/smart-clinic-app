@@ -26,7 +26,7 @@ export class LoginComponent extends FormComponent implements OnInit  {
     });
   }
 
-  login(): void {
+  public login(): void {
     let login: Credentials = this.loginForm.getRawValue() as Credentials;
     this.validate(this.loginForm);
     if (this.loginForm.invalid) {

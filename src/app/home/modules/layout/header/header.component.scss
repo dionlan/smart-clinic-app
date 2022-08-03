@@ -1,0 +1,116 @@
+$background-color: #074368;
+$font-color: #ABBAC7;
+
+#sidebarToggle {
+  font-size: 1.5rem !important;
+  color: #468FB3 !important;
+}
+
+header {
+  background-color: $background-color;
+  padding: 0 8px;
+}
+
+header .navbar {
+  padding: 0;
+  height: 55px;
+}
+
+header .nav-brand {
+  display: flex;
+  align-items: center;
+  color: $font-color;
+  text-decoration: none;
+}
+
+header .logo {
+  margin: 8px 16px;
+  color: #468fb3;
+}
+
+header .title {
+  letter-spacing: 1.5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header .navbar-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+header .dropdown-menu {
+  background-color: $background-color;
+  width: 100%;
+}
+
+header .dropdown-item {
+  color: $font-color;
+  font-size: 13px;
+}
+
+header .dropdown-item i {
+  margin-right: 2px;
+}
+
+header .dropdown-item:hover {
+  background-color: gray;
+}
+
+header .nav-link {
+  color: $font-color;
+  cursor: pointer;
+}
+
+header .menu {
+  display: flex;
+  align-items: center;
+}
+
+header .username {
+  margin: 0 2px 0 8px;
+  font-size: 14px;
+}
+
+header .logout {
+  margin: 0 16px;
+  color: #468fb3;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.nav-content-right {
+  width: 50%;
+  display: flex;
+  margin-right: 2.5em;
+  justify-content: right;
+  align-items: center;
+}
+
+.nav-content-right div {
+  padding: 10px;
+}
+
+.nav-content-right .link-user {
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (max-width: 990px) {
+  .nav-content-right {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  header .title {
+    font-size: 2vw;
+  }
+  header .username {
+    font-size: 1vw;
+  }
+}

@@ -1,1 +1,32 @@
-<p>home works!</p>
+<router-outlet name="no-default-layout" #noDefaultLayoutOutlet="outlet"></router-outlet>
+
+<div [hidden]="noDefaultLayoutOutlet.isActivated">
+  <app-header [toggleMenuSubject]="toggleMenuSubject"></app-header>
+  <div id="layoutSidenav">
+    <app-side-menu [toggleMenuSubject]="toggleMenuSubject"></app-side-menu>
+    <div id="layoutSidenav_content">
+      <app-breadcrumb
+        module="teste"
+        component="teste"
+        action="teste"
+      ></app-breadcrumb>
+      <main class="mb-5">
+        <div class="container-fluid px-4">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">SEFAZ - MA</div>
+            <div>
+              <a href="#">Privacy Policy</a>
+              &middot;
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>

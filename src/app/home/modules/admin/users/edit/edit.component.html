@@ -1,0 +1,162 @@
+<app-main-panel icon="fa-users" module="admin" component="users" action="edit" [title]="'home.admin.users.edit.header'">
+  <section class="new">
+    <form (submit)="update()" [formGroup]="form" class="row g-3">
+      <input type="hidden" id="inputId" formControlName="id" />
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">
+          {{ "home.admin.users.form.name.label" | translate }}
+          <span style="font-size: 12px;">{{ "home.admin.users.form.comp-name.label" | translate }}</span>
+        </label>
+        <input class="form-control" id="inputName" formControlName="nome" />
+          <input-feedback [control]="form.get('nome')"></input-feedback>
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail" class="form-label">
+          {{ "home.admin.users.form.email.label" | translate }}
+        </label>
+        <input class="form-control" id="inputEmail" formControlName="email" />
+        <input-feedback [control]="form.get('email')"></input-feedback>
+      </div>
+      <div class="col-md-3">
+        <label for="inputCpf" class="form-label">
+          {{ "home.admin.users.form.cpf.label" | translate }}
+        </label>
+        <input class="form-control" id="inputCpf" [value]="form.get('cpf')?.value"
+           formControlName="cpf" maxlength="11" />
+        <input-feedback [control]="form.get('cpf')"></input-feedback>
+      </div>
+      <div class="col-md-3">
+        <label for="inputProfile" class="form-label">
+          {{ "home.admin.users.form.profile.label" | translate }}
+        </label>
+        <p-multiSelect [style]="{'font-size':'14px'}"
+          [styleClass]="'form-control h-60'" optionValue="id"
+           [options]="profiles" optionLabel="nome"  formControlName="profileId">
+        </p-multiSelect>
+      </div>
+      <div class="col-md-6">
+        <label class="col-md-12 form-label">{{ "home.admin.users.form.status.label" | translate }}</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="ativo" value="true" formControlName="ativo">
+          <label class="form-check-label">{{ "home.admin.users.form.status.active" | translate }}</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="ativo" value="false" formControlName="ativo">
+            <label class="form-check-label">{{ "home.admin.users.form.status.inactive" | translate }}</label>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <label for="imagem">
+          {{ "home.admin.users.form.photo.label" | translate }}
+          <span style="font-size: small;">{{ "home.admin.users.form.photo.formats" | translate }}</span>
+        </label>
+        <app-file-upload [previewWidth]="150" [previewHeight]="150" id="imagem" [control]="form.get('imagem')"></app-file-upload>
+        <input-feedback [control]="form.get('imagem')"></input-feedback>
+      </div>
+
+      <hr class="my-4">
+
+      <div class="col-md-6">
+        <button class="btn btn-success btn-sm" type="button"
+            (click)="openReset(contentReset, user)">
+              <i class="fa fa-refresh"></i>
+                {{ "home.admin.users.form.button.reset" | translate }}
+        </button>&nbsp;
+        <button class="btn btn-danger btn-sm" type="button"
+        (click)="open(content, user)">
+          <i class="fa fa-trash"></i>
+          {{ "home.admin.users.form.button.delete" | translate }}
+        </button>
+      </div>
+
+      <div class="col-md-6 text-right">
+        <button type="submit" class="btn btn-success btn-sm">
+          <i class="fa fa-save"></i>
+          {{ "home.admin.users.form.button.update" | translate }}
+        </button>&nbsp;
+        <button type="button" [routerLink]="['/admin', 'usuarios']" class="btn btn-outline-primary btn-sm">
+          <i class="fa fa-times"></i> {{ "home.admin.users.form.button.cancel" | translate }}
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        {{ "home.admin.users.confirm-dialog.title" | translate }}
+      </h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="modal.dismiss()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formReset">
+        <div class="row">
+          <div class="col-md-2 info-circle-center">
+            <span class="pi pi-info-circle" style="font-size: 2.5rem;"></span>
+          </div>
+          <div class="col-md-10">
+            <div class="form-group">
+              <label style="text-align: justify;">
+                {{ "home.admin.users.confirm-dialog.message" | translate }}</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <input class="form-control mt-3" id="inputPassword" type="password" formControlName="senha"
+              placeholder="{{ 'auth.main.login.label.password' | translate }}" autocomplete="current-password" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success btn-sm" (click)="modal.close()">
+        <i class="fa fa-check-square-o"></i>
+        {{ "home.admin.users.confirm-dialog.button.ok" | translate }}
+      </button>&nbsp;
+      <button type="button" class="btn btn-outline-primary btn-sm" (click)="modal.dismiss()">
+        <i class="fa fa-times"></i> {{ "home.admin.users.confirm-dialog.button.cancel" | translate }}
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-template #contentReset let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        {{ "home.admin.users.confirm-reset.title" | translate }}
+      </h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="modal.dismiss()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form   [formGroup]="formReset">
+        <div class="row">
+          <div class="col-md-2 info-circle-center">
+            <span class="pi pi-info-circle " style="font-size: 2.5rem"></span>
+          </div>
+          <div class="col-md-10">
+            <div class="form-group">
+              <label style="text-align: justify;">
+                {{ "home.admin.users.confirm-reset.message" | translate }}</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <input class="form-control mt-3 " id="inputPassword" type="password" formControlName="senha"
+              placeholder="{{ 'auth.main.login.label.password' | translate }}" autocomplete="current-password" />
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success btn-sm" (click)="modal.close()">
+        <i class="fa fa-check-square-o"></i>
+        {{ "home.admin.users.confirm-reset.button.ok" | translate }}
+      </button>&nbsp;
+      <button type="button" class="btn btn-outline-primary btn-sm" (click)="modal.dismiss()">
+        <i class="fa fa-times"></i>
+        {{ "home.admin.users.confirm-reset.button.cancel" | translate }}
+      </button>
+    </div>
+  </ng-template>
+</app-main-panel>

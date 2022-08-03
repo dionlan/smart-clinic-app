@@ -1,0 +1,14 @@
+.home {
+  padding: 0;
+  height: 100vh;
+  margin-top: 70px;
+}
+
+.main {
+  height: calc(100% - 55px);
+  display: flex;
+}
+
+footer {
+  //flex: 1 0 auto;
+}

@@ -1,0 +1,187 @@
+<app-main-panel
+  icon="fa-users"
+  module="admin"
+  component="profiles"
+  action="index"
+  [title]="'home.admin.profiles.index.header'"
+>
+<section class="new">
+  <form (submit)="search()" [formGroup]="form" class="row g-3">
+    <div class="col-md-6">
+      <label for="inputName" class="form-label">
+        {{ "home.admin.profiles.search.form.name.label" | translate }}
+      </label>
+      <input class="form-control" id="inputName" formControlName="name" placeholder="{{
+        'home.admin.profiles.search.form.name.placeholder' | translate
+      }}" />
+      <input-feedback [control]="form.get('name')"></input-feedback>
+    </div>
+    <div class="col-md-6">
+      <label for="inputCustomerService" class="form-label">
+        {{ "home.admin.profiles.search.form.funcionalidade.label" | translate }}
+      </label>
+      <select class="form-select" id="inputCustomerService" formControlName="funcionalidade"
+          (change)="selectedFeature()">
+          <option value="" disabled selected>
+            {{ "home.admin.profiles.search.form.funcionalidade.select" | translate }}
+          </option>
+          <option *ngFor="let c of resultFeatures" value="{{ c.id }}">
+            {{ c.modulo + " - " + c.detalhe }}
+          </option>
+        </select>
+        <input-feedback [control]="form.get('servicoAtendimento')"></input-feedback>
+    </div>
+    <div class="col-md-6">
+      <label class="col-md-12 form-label">{{ "home.admin.users.form.status.label" | translate }}</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" value="true" formControlName="radio_status">
+        <label class="form-check-label">{{ "home.admin.users.form.status.active" | translate }}</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="false" formControlName="radio_status">
+          <label class="form-check-label">{{ "home.admin.users.form.status.inactive" | translate }}</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="radio_status">
+          <label class="form-check-label">{{ "home.admin.users.form.status.all" | translate }}</label>
+      </div>
+    </div>
+    <div class="col-md-12 text-right">
+      <button type="button" class="btn btn-outline-primary btn-sm" (click)="reset()">{{ "home.admin.users.search.button.reset" | translate }}</button> &nbsp;
+      <button type="submit" class="btn btn-primary btn-sm">
+        <i class="fa fa-search"></i> {{ "home.admin.users.search.button.search" | translate }}
+      </button>
+    </div>
+  </form>
+</section>
+
+<hr class="my-4">
+  <section class="new">
+    <div class="col-md-12" style="text-align: right !important;">
+      <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/admin', 'perfis', 'novo']">
+        <i class="fa fa-plus-circle"></i>
+        {{ "home.admin.profiles.search.form.button.new" | translate }}
+      </button>
+    </div>
+  </section>
+
+    <app-empty-result *ngIf="!result.length" [subject]="onEmptyResultSubject"></app-empty-result>
+  <section class="results mt-4" *ngIf="result.length">
+    <p-table
+      [value]="result"
+      [rowHover]="true"
+      [paginator]="true"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[5, 10, 15]"
+      [showPageLinks]="true"
+      currentPageReportTemplate="Exibindo {first} até {last} de {totalRecords} linhas"
+      styleClass="p-datatable-striped"
+    >
+      <ng-template pTemplate="header">
+        <tr class="table-header">
+          <th pSortableColumn="nome">
+            {{ "home.admin.profiles.table.col.profile" | translate }}
+            <p-sortIcon field="nome"></p-sortIcon>
+          </th>
+          <th>
+            {{ "home.admin.profiles.table.col.permissions" | translate }}
+          </th>
+          <th pSortableColumn="ativo" class="col-active text-center">
+            {{ "home.admin.profiles.table.col.active" | translate }}
+            <p-sortIcon field="ativo"></p-sortIcon>
+          </th>
+          <th class="col-actions text-center">
+            {{ "home.admin.profiles.table.col.actions.header" | translate }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-profile>
+        <tr class="table-row">
+          <td>{{ profile.nome }}</td>
+          <td >
+            <span *ngIf="profile.permissoes?.length > 0">
+              {{ permissionNames(profile) }}
+            </span>
+            <span *ngIf="profile.permissoes?.length == 0">
+             <strong> {{ permissionNames(profile) }} </strong>
+            </span>
+          </td>
+
+          <td class="text-center">
+            {{
+              profile.ativo
+                ? ("home.admin.profiles.table.col.status.active" | translate)
+                : ("home.admin.profiles.table.col.status.inactive" | translate)
+            }}
+          </td>
+          <td style="text-align: center;">
+            <div class="actions">
+              <a class="fa fa-edit button-grid" title="{{
+                  'home.admin.profiles.table.col.actions.title.edit' | translate
+                }}" [routerLink]="['/admin', 'perfis', 'edita', profile.id]">
+              </a>
+
+              <a
+                *ngIf="profile.ativo"
+                class="fa fa-times button-grid"
+                title="{{
+                  'home.admin.profiles.table.col.actions.title.inactivate'
+                    | translate
+                }}"
+                (click)="toggleActive(profile)"
+              >
+              </a>
+              <a
+                *ngIf="!profile.ativo"
+                class="fa fa-check button-grid"
+                title="{{
+                  'home.admin.profiles.table.col.actions.title.activate'
+                    | translate
+                }}"
+                (click)="toggleActive(profile)"
+              ></a>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </section>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        {{ "home.admin.profiles.confirm-dialog.title" | translate }}
+      </h4>
+      <button type="button" class="close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label>
+            {{
+              "home.admin.profiles.confirm-dialog.message" | translate
+            }}</label
+          >
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="modal.close()"
+      >
+        {{ "home.admin.profiles.confirm-dialog.button.ok" | translate }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="modal.dismiss()"
+      >
+        {{ "home.admin.profiles.confirm-dialog.button.cancel" | translate }}
+      </button>
+    </div>
+  </ng-template>
+</app-main-panel>

@@ -1,0 +1,71 @@
+<app-main-panel icon="fa-users" [title]="'home.admin.users.new.header'">
+  <section class="new">
+    <form (submit)="create()" [formGroup]="userForm" class="row g-3">
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">
+          {{ "home.admin.users.form.name.label" | translate }}
+          <span style="font-size: 12px;">{{ "home.admin.users.form.comp-name.label" | translate }}</span>
+        </label>
+        <input class="form-control" id="inputName" formControlName="nome" />
+          <input-feedback [control]="userForm.get('nome')"></input-feedback>
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail" class="form-label">
+          {{ "home.admin.users.form.email.label" | translate }}
+        </label>
+        <input class="form-control" id="inputEmail" formControlName="email" />
+        <input-feedback [control]="userForm.get('email')"></input-feedback>
+      </div>
+
+      <div class="col-md-3">
+        <label for="inputCpf" class="form-label">
+          {{ "home.admin.users.form.cpf.label" | translate }}
+        </label>
+        <input class="form-control" id="inputCpf" [value]="userForm.get('cpf')?.value"
+           formControlName="cpf" maxlength="11" />
+        <input-feedback [control]="userForm.get('cpf')"></input-feedback>
+      </div>
+      <div class="col-md-3">
+        <label for="inputProfile" class="form-label">
+          {{ "home.admin.users.form.profile.label" | translate }}
+        </label>
+        <p-multiSelect [style]="{'font-size':'14px'}"
+          [styleClass]="'form-control h-60'" optionValue="id"
+           [options]="profiles" optionLabel="nome"  formControlName="profileId">
+        </p-multiSelect>
+      </div>
+      <div class="col-md-6">
+        <label class="col-md-12 form-label">{{ "home.admin.users.form.status.label" | translate }}</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="ativo" value="true" formControlName="ativo">
+          <label class="form-check-label">{{ "home.admin.users.form.status.active" | translate }}</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="ativo" value="false" formControlName="ativo">
+            <label class="form-check-label">{{ "home.admin.users.form.status.inactive" | translate }}</label>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <label for="imagem">
+          {{ "home.admin.users.form.photo.label" | translate }}
+          <span style="font-size: small;">{{ "home.admin.users.form.photo.formats" | translate }}</span>
+        </label>
+        <app-file-upload id="imagem" [control]="userForm.get('imagem')"></app-file-upload>
+        <input-feedback [control]="userForm.get('imagem')"></input-feedback>
+      </div>
+
+      <hr class="my-4">
+
+      <div class="col-md-12 text-right">
+        <button type="submit" class="btn btn-success btn-sm">
+          <i class="fa fa-save"></i>
+          {{ "home.admin.users.form.button.submit" | translate }}
+        </button>&nbsp;
+        <button type="button" [routerLink]="['/admin', 'usuarios']" class="btn btn-outline-primary btn-sm">
+          <i class="fa fa-times"></i> {{  "home.admin.users.form.button.cancel" | translate }}
+        </button>
+      </div>
+    </form>
+  </section>
+</app-main-panel>

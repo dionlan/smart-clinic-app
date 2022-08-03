@@ -1,0 +1,398 @@
+<app-main-panel [title]="'home.admin.profiles.edit.header'"
+icon="fa-users" module="admin" component="profiles" action="edit">
+  <section class="new">
+    <form (submit)="update()" [formGroup]="form" class="row g-3">
+      <input type="hidden" id="inputId" formControlName="id" />
+      <input type="hidden" id="inputActive" formControlName="active" />
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">
+          {{ "home.admin.profiles.form.name.label" | translate }}
+        </label>
+        <input class="form-control" id="inputName" formControlName="nome" />
+      </div>
+      <div class="col-md-6">
+        <label class="col-md-12 form-label">{{ "home.admin.profiles.form.status.label" | translate }}</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="ativo" value="true" formControlName="ativo">
+          <label class="form-check-label">{{ "home.admin.users.form.status.active" | translate }}</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="ativo" value="false" formControlName="ativo">
+            <label class="form-check-label">{{ "home.admin.users.form.status.inactive" | translate }}</label>
+        </div>
+      </div>
+      <p-tabView #tabView [styleClass]="'mt-4'">
+        <p-tabPanel [headerStyleClass]="'cope justify-content-center d-flex'"
+        [selected]="true" [header]="'home.admin.profiles.form.tab.header.home' | translate">
+          <div class="row">
+            <div class="col-lg-4">
+              <input type="checkbox" [value]="'home'" (change)="checkUncheckAll($event)"
+              [checked]="isChecked('home')"/>
+              {{'home.admin.profiles.form.tab.button.all' | translate}}
+            </div>
+            <p-card>
+              <div class="col-md-6">
+                <app-checkbox-profile [title]="'home.admin.profiles.form.tab.header.home'" [permissions]="options"
+                  controle="home">
+                </app-checkbox-profile>
+              </div>
+            </p-card>
+
+          </div>
+        </p-tabPanel>
+
+        <p-tabPanel [headerStyleClass]="'cope'"
+        header="{{'home.admin.profiles.form.tab.header.admin' | translate}}">
+            <div class="col-lg-4">
+              <input type="checkbox" [value]="'admin'" (change)="checkUncheckAll($event)"
+              [checked]="isChecked('admin')" />
+              {{'home.admin.profiles.form.tab.button.all' | translate}}
+            </div>
+            <p-card >
+              <div class="row">
+              <div class="col-md-6">
+                <app-checkbox-profile [title]="'home.admin.profiles.form.tab.admin.users'" [permissions]="options"
+                  controle="user">
+                </app-checkbox-profile>
+              </div>
+              <div class="col-md-6">
+                <app-checkbox-profile [title]="'home.admin.profiles.form.tab.admin.profile'" [permissions]="options"
+                  controle="profile">
+                </app-checkbox-profile>
+              </div>
+            </div>
+            </p-card>
+
+
+        </p-tabPanel>
+
+        <p-tabPanel [headerStyleClass]="'cope justify-content-center d-flex'"
+        header="{{'home.admin.profiles.form.tab.header.website' | translate}}">
+          <div class="col-lg-4">
+            <input type="checkbox" [value]="'website'" (change)="checkUncheckAll($event)"
+            [checked]="isChecked('website')"/>
+            {{'home.admin.profiles.form.tab.button.all' | translate}}
+          </div>
+          <p-card>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.website.menu'" [permissions]="options"
+                controle="menu">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.website.content'" [permissions]="options"
+                controle="content">
+              </app-checkbox-profile>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.website.services'" [permissions]="options"
+                controle="service">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.website.program'" [permissions]="options"
+                controle="program">
+              </app-checkbox-profile>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.website.campaign'" [permissions]="options"
+                controle="campaign">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.website.repository'" [permissions]="options"
+                controle="repository">
+              </app-checkbox-profile>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.website.style'" [permissions]="options"
+                controle="style">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.website.calendar'" [permissions]="options"
+                controle="calendar">
+              </app-checkbox-profile>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.website.contacts'" [permissions]="options"
+                controle="contacts">
+              </app-checkbox-profile>
+            </div>
+          </div>
+        </p-card>
+        </p-tabPanel>
+        <p-tabPanel [headerStyleClass]="'cope justify-content-center d-flex'"
+        header="{{'home.admin.profiles.form.tab.header.faq' | translate}}">
+          <div class="col-lg-4">
+            <input type="checkbox" [value]="'faq'" (change)="checkUncheckAll($event)"
+            [checked]="isChecked('faq')"/>
+            {{'home.admin.profiles.form.tab.button.all' | translate}}
+          </div>
+          <p-card>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.faq.question'" [permissions]="options"
+                controle="questions">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.faq.category'" [permissions]="options"
+                controle="categories">
+              </app-checkbox-profile>
+            </div>
+          </div>
+        </p-card>
+        </p-tabPanel>
+        <p-tabPanel [headerStyleClass]="'cope_big justify-content-center d-flex'"
+        header="{{'home.admin.profiles.form.tab.header.knowledge' | translate}}">
+          <div class="col-lg-4">
+            <input type="checkbox" [value]="'knowledge'" (change)="checkUncheckAll($event)"
+            [checked]="isChecked('knowledge')" />
+            {{'home.admin.profiles.form.tab.button.all' | translate}}
+          </div>
+          <p-card>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.knowledge.itens-theme'" [permissions]="options"
+                controle="itens-theme">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.knowledge.itens-subject'" [permissions]="options"
+                controle="itens-subject">
+              </app-checkbox-profile>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.knowledge.config'" [permissions]="options"
+                controle="config">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.knowledge.management'" [permissions]="options"
+                controle="management">
+              </app-checkbox-profile>
+            </div>
+          </div>
+        </p-card>
+        </p-tabPanel>
+        <p-tabPanel [headerStyleClass]="'cope_big justify-content-center d-flex'"
+        header="{{'home.admin.profiles.form.tab.header.chat' | translate}}">
+          <div class="col-lg-4">
+            <input type="checkbox" [value]="'chat'" (change)="checkUncheckAll($event)"
+            [checked]="isChecked('chat')"/>
+            {{'home.admin.profiles.form.tab.button.all' | translate}}
+          </div>
+          <p-card>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.chat.virtual-service'" [permissions]="options"
+                controle="virtual-service">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.chat.blocked-users'" [permissions]="options"
+                controle="blocked-users">
+              </app-checkbox-profile>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.chat.attendance'" [permissions]="options"
+                controle="attendance">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.chat.reports'" [permissions]="options"
+                controle="reports">
+              </app-checkbox-profile>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.chat.quick-answer'" [permissions]="options"
+                controle="quick-answer">
+              </app-checkbox-profile>
+            </div>
+
+          </div>
+        </p-card>
+        </p-tabPanel>
+        <p-tabPanel [headerStyleClass]="'cope justify-content-center d-flex'"
+        header="{{'home.admin.profiles.form.tab.header.demand' | translate}}">
+          <div class="col-lg-4">
+            <input type="checkbox" [value]="'demand'" (change)="checkUncheckAll($event)"
+            [checked]="isChecked('demand')" />
+            {{'home.admin.profiles.form.tab.button.all' | translate}}
+          </div>
+          <p-card>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.demand.tag'" [permissions]="options"
+                controle="tag">
+              </app-checkbox-profile>
+            </div>
+          </div>
+        </p-card>
+        </p-tabPanel>
+        <p-tabPanel [headerStyleClass]="'cope justify-content-center d-flex'"
+         header="{{'home.admin.profiles.form.tab.header.schedule' | translate}}">
+          <div class="col-lg-4">
+            <input type="checkbox" [value]="'schedule'" (change)="checkUncheckAll($event)"
+            [checked]="isChecked('schedule')" />
+            {{'home.admin.profiles.form.tab.button.all' | translate}}
+          </div>
+          <p-card>
+            <div class="row">
+              <div class="col-md-6">
+                <app-checkbox-profile [title]="'home.admin.profiles.form.tab.schedule.unit-service'" [permissions]="options"
+                  controle="unit-service">
+                </app-checkbox-profile>
+              </div>
+              <div class="col-md-6">
+                <app-checkbox-profile [title]="'home.admin.profiles.form.tab.schedule.password-call'" [permissions]="options"
+                  controle="scheduling-call">
+                </app-checkbox-profile>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <app-checkbox-profile
+                [title]="'home.admin.profiles.form.tab.schedule.interrupt' | translate"
+                [permissions]="options"
+                  controle="interrupt">
+                </app-checkbox-profile>
+              </div>
+            </div>
+          </p-card>
+        </p-tabPanel>
+        <p-tabPanel [headerStyleClass]="'cope justify-content-center d-flex'"
+        header="{{'home.admin.profiles.form.tab.header.app' | translate}}">
+          <div class="col-lg-4">
+            <input type="checkbox" [value]="'app'" (change)="checkUncheckAll($event)"
+            [checked]="isChecked('app')"  />
+            {{'home.admin.profiles.form.tab.button.all' | translate}}
+          </div>
+          <p-card>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.app.warning'" [permissions]="options"
+                controle="warning">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.app.app-service'" [permissions]="options"
+                controle="app-service">
+              </app-checkbox-profile>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.app.app-user'" [permissions]="options"
+                controle="app-user">
+              </app-checkbox-profile>
+            </div>
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.app.terms'" [permissions]="options"
+                controle="terms">
+              </app-checkbox-profile>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.app.push'" [permissions]="options"
+                controle="push">
+              </app-checkbox-profile>
+            </div>
+
+            <div class="col-md-6">
+              <app-checkbox-profile [title]="'home.admin.profiles.form.tab.app.notify-user'" [permissions]="options"
+                controle="notify-user">
+              </app-checkbox-profile>
+            </div>
+          </div>
+        </p-card>
+        </p-tabPanel>
+
+
+      </p-tabView>
+
+      <hr class="my-4">
+      <div class="row">
+        <app-panel-profile [permissions]="options"></app-panel-profile>
+      </div>
+
+      <hr class="my-4">
+      <div class="col-md-6">
+        <button class="btn btn-danger btn-sm" type="button"
+        (click)="open(content)">
+          <i class="fa fa-trash"></i>
+          {{ "home.admin.profiles.form.button.delete" | translate }}
+        </button><br/><br/>
+        <small *ngIf="hasUser"
+            style="color: black;">
+              <strong>
+                {{ "home.admin.profiles.form.warning.label" | translate }}
+              </strong>
+              {{ "home.admin.profiles.form.warning.message" | translate }}
+        </small>
+      </div>
+      <div class="col-md-6 text-right">
+        <button type="submit" class="btn btn-success btn-sm">
+          <i class="fa fa-save"></i>
+          {{ "home.admin.profiles.form.button.update" | translate }}
+        </button>&nbsp;
+        <button type="button" [routerLink]="['/admin', 'perfis']" class="btn btn-outline-primary btn-sm">
+          <i class="fa fa-times"></i> {{ "home.admin.profiles.form.button.cancel" | translate }}
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        {{ "home.admin.users.confirm-dialog.title" | translate }}
+      </h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="modal.dismiss()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form   [formGroup]="formReset">
+        <div class="row">
+          <div class="col-md-2 info-circle-center">
+            <span class="pi pi-info-circle " style="font-size: 2.5rem"></span>
+          </div>
+          <div class="col-md-10">
+            <div class="form-group">
+              <label style="text-align: justify;">
+                {{ "home.admin.profiles.confirm-dialog.message" | translate }}</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+              <input class="form-control mt-3" id="inputPassword" type="password" formControlName="senha"
+              placeholder="{{ 'auth.main.login.label.password' | translate }}" autocomplete="current-password" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success btn-sm" (click)="modal.close()">
+        {{ "home.admin.users.confirm-dialog.button.ok" | translate }}
+      </button>&nbsp;
+      <button type="button" class="btn btn-outline-primary btn-sm" (click)="modal.dismiss()">
+        {{ "home.admin.users.confirm-dialog.button.cancel" | translate }}
+      </button>
+    </div>
+  </ng-template>
+</app-main-panel>
