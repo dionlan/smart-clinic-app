@@ -1,11 +1,11 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark shadow">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
   <!-- Sidebar Toggle-->
   <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" (click)="toggleMenu()"><i
       class="fa fa-bars"></i>
   </button>
   <!-- Navbar Search-->
   <div class="navbar-brand  me-0 w-100">
-    <a class="navbar-brand ps-3 text-nowrap w-100 d-none d-sm-block "  style="font-size: 1.5rem; font-weight: bold;"
+    <a class="navbar-brand ps-3 text-nowrap w-100 d-none d-sm-block "  style="font-size: 1.5rem;"
     href="index.html">{{ "home.header.title" |
       translate }}</a>
   </div>
@@ -13,7 +13,7 @@
   <div class="nav-content-right">
     <div>
       <a style="font-size: 14px;" class="link-user" [routerLink]="['admin', 'usuarios', 'edita', idUsuario]" >
-        {{nomeUsuario }}
+        {{ nomeUsuario }}
       </a>
     </div>
     <div>
@@ -25,7 +25,7 @@
         [height]="previewHeight"
         [src]="srcImage" />
         <i *ngIf="!srcImage"
-            style="color: #468FB3; font-size: 24px;"
+            style="color: #c4c4c4; font-size: 24px;"
             class="fa  fa-user-circle-o">
         </i>
       </a>

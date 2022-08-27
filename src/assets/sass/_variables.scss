@@ -1,0 +1,11 @@
+$base-color: #074368;
+$base-color-sidenav: #081C3C;
+// Import Bootstrap variables for use within theme
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+
+// Import spacing variables
+@import "./variables/spacing";
+
+// Import navigation variables
+@import "./variables/navigation";

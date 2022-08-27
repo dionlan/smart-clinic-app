@@ -9,7 +9,6 @@ import { BreadcrumbService } from './home/modules/layout/breadcrumb/breadcrumb.s
 import { LoadingService } from './home/modules/layout/loading/loading.service';
 import { filter } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -43,9 +42,6 @@ export class AppComponent implements OnInit{
     this.translate.get('app.title').subscribe((res: string) => {
       this.setDocTitle(res);
     });
-    this.translate.get('app.title').subscribe((res: string) => {
-      this.setDocTitle(res);
-    });
     this.observerBreadcrumbs();
     this.observerLoading();
   }
@@ -70,9 +66,11 @@ export class AppComponent implements OnInit{
       this.loadingService.hide(true);
       window.scrollTo(0, 0);
     });
+
     this.unsubscribe.push(loadingOffObservable);
     this.unsubscribe.push(loadingOnObservable);
   }
+
 
   ngOnDestroy() {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());
@@ -80,9 +78,5 @@ export class AppComponent implements OnInit{
 
   setDocTitle(title: string) {
     this.titleService.setTitle(title);
-  }
-
-  onLogout(): void {
-    this.authService.logout();
   }
 }

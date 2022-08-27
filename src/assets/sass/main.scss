@@ -1,13 +1,17 @@
-@import "src/assets/sass/layout/forms";
+@import "./variables";
+@import "./layout/list";
+@import "./layout/forms";
+@import "./layout/side-menu";
+@import "./layout/breadcrumb";
 
-#layoutSidenav_content main {
+/*#layoutSidenav_content main {
   margin-top: 5rem;
 }
 
 #layoutSidenav_content main .px-4 {
   padding-right: 1.25rem !important;
   padding-left: 1.25rem !important;
-}
+}*/
 
 .main-title h4, .h4 {
   font-size: 1.4rem;
@@ -19,15 +23,16 @@
   overflow: hidden;
   background-color: blue;
 }
+
 .card_itens{
   position: relative;
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   min-width: 0;
-  /* word-wrap: break-word; */
+  word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  /* border: 1px solid rgba(0, 0, 0, 0.125); */
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 div .cope_init{
@@ -49,16 +54,13 @@ div .cope{
     white-space: nowrap;
 }
 
-
 @media screen and (max-width: 1200px) {
-
   div .cope {
     flex-wrap: wrap;
-      width: 50%;
+    width: 50%;
   }
   .cope_big{
     flex-wrap: wrap;
-      width: 50%;
+    width: 50%;
   }
-
 }

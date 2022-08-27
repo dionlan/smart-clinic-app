@@ -5,8 +5,8 @@
         <label for="inputName" class="form-label">
           {{ "home.admin.users.form.name.label" | translate }}
         </label>
-        <input class="form-control" id="inputName" formControlName="name" />
-        <!-- <input-feedback [control]="form.get('name')"></input-feedback> -->
+        <input class="form-control" id="inputNome" formControlName="nome" />
+        <input-feedback [control]="form.get('nome')"></input-feedback>
       </div>
       <div class="col-md-6">
         <label for="inputEmail" class="form-label">
@@ -14,36 +14,6 @@
         </label>
         <input class="form-control" id="inputEmail" formControlName="email" />
         <input-feedback [control]="form.get('email')"></input-feedback>
-      </div>
-      <div class="col-md-3">
-        <label for="inputCpf" class="form-label">
-          {{ "home.admin.users.form.cpf.label" | translate }}
-        </label>
-        <input class="form-control" id="inputCpf" [value]="form.get('cpf')?.value "
-        formControlName="cpf" maxlength="11"/>
-      </div>
-      <div class="col-md-3">
-        <label for="inputProfile" class="form-label">
-          {{ "home.admin.users.form.profile.label" | translate }}
-        </label>
-        <p-multiSelect
-        [styleClass]="'form-control h-60'" optionValue="id"
-        [options]="profiles" optionLabel="nome"  formControlName="profileId"></p-multiSelect>
-      </div>
-      <div class="col-md-6">
-        <label class="col-md-12 form-label">{{ "home.admin.users.form.status.label" | translate }}</label>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" value="true" formControlName="radio_status">
-          <label class="form-check-label">{{ "home.admin.users.form.status.active" | translate }}</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" value="false" formControlName="radio_status">
-            <label class="form-check-label">{{ "home.admin.users.form.status.inactive" | translate }}</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" formControlName="radio_status">
-            <label class="form-check-label">{{ "home.admin.users.form.status.all" | translate }}</label>
-        </div>
       </div>
       <div class="col-md-12 text-right">
         <button type="button" class="btn btn-outline-primary btn-sm" (click)="reset()">{{ "home.admin.users.search.button.reset" | translate }}</button> &nbsp;
@@ -66,7 +36,6 @@
 
   <app-empty-result *ngIf="!result.length" [subject]="onEmptyResultSubject"></app-empty-result>
   <section class="results mt-3" *ngIf="result.length">
-
     <p-table [value]="result" [rowHover]="true" [rows]="5" [showCurrentPageReport]="true"
       [rowsPerPageOptions]="[5, 10, 15]" [paginator]="true"
       currentPageReportTemplate="Exibindo {first} até {last} de {totalRecords} linhas">
@@ -76,20 +45,23 @@
             {{ "home.admin.users.table.col.name" | translate }}
             <p-sortIcon field="nome"></p-sortIcon>
           </th>
-          <th>
+          <th pSortableColumn="email">
             {{ "home.admin.users.table.col.email" | translate }}
+            <p-sortIcon field="email"></p-sortIcon>
           </th>
-          <th>
-            {{ "home.admin.users.table.col.cpf" | translate }}
+          <th pSortableColumn="profile">
+            {{ "home.admin.users.table.col.profile" | translate }}
+            <p-sortIcon field="profile"></p-sortIcon>
+          </th>
+          <th pSortableColumn="dataCadastro">
+            {{ "home.admin.users.table.col.register-date" | translate }}
+            <p-sortIcon field="dataCadastro"></p-sortIcon>
           </th>
           <th pSortableColumn="ativo">
             {{ "home.admin.users.table.col.active" | translate }}
             <p-sortIcon field="ativo"></p-sortIcon>
           </th>
           <th>
-            {{ "home.admin.users.table.col.profile" | translate }}
-          </th>
-          <th class="col-actions text-center">
             {{ "home.admin.users.table.col.actions.header" | translate }}
           </th>
         </tr>
@@ -98,7 +70,8 @@
         <tr class="table-row">
           <td><span class="d-block text-truncate">{{ user.nome }}</span></td>
           <td><span class="d-block text-truncate">{{ user.email }}</span></td>
-          <td><span class="d-block text-truncate">{{ user.cpf }}</span></td>
+          <td><span class="d-block text-truncate">{{ user.perfilDescricao  }}</span></td>
+          <td><span class="d-block text-truncate">{{ user.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span></td>
           <td>
             {{
             user.ativo
@@ -107,16 +80,11 @@
             }}
           </td>
           <td>{{ profileNames(user) }}</td>
-          <td style="text-align: center;">
+          <td>
             <div class="actions">
-
               <a class="fa fa-edit button-grid" title="{{
                   'home.admin.users.table.col.actions.title.edit' | translate
                 }}" [routerLink]="['/admin', 'usuarios', 'edita', user.id]">
-              </a>
-              <a class="fa fa-refresh button-grid" title="{{
-                'home.admin.users.table.col.actions.title.reset' | translate
-              }}" (click)="openReset(contentReset, user)">
               </a>
               <a
                 *ngIf="user.ativo"
@@ -172,47 +140,6 @@
       </button>
       <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss()">
         {{ "home.admin.users.confirm-dialog.button.cancel" | translate }}
-      </button>
-    </div>
-  </ng-template>
-
-  <ng-template #contentReset let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">
-        {{ "home.admin.users.confirm-reset.title" | translate }}
-      </h4>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="modal.dismiss()" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <form   [formGroup]="formReset">
-        <div class="row">
-          <div class="col-md-2 info-circle-center">
-            <span class="pi pi-info-circle " style="font-size: 2.5rem"></span>
-          </div>
-          <div class="col-md-10">
-            <div class="form-group">
-              <label style="text-align: justify;">
-                {{ "home.admin.users.confirm-reset.message" | translate }}</label>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="form-group">
-              <input class="form-control mt-3 " id="inputPassword" type="password" formControlName="senha"
-              placeholder="{{ 'auth.main.login.label.password' | translate }}" autocomplete="current-password" />
-            </div>
-          </div>
-        </div>
-
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-success btn-sm" (click)="modal.close()">
-        <i class="fa fa-check-square-o"></i>
-        {{ "home.admin.users.confirm-reset.button.ok" | translate }}
-      </button>&nbsp;
-      <button type="button" class="btn btn-outline-primary btn-sm" (click)="modal.dismiss()">
-        <i class="fa fa-times"></i>
-        {{ "home.admin.users.confirm-reset.button.cancel" | translate }}
       </button>
     </div>
   </ng-template>

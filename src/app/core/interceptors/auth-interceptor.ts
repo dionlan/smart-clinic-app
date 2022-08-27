@@ -1,10 +1,14 @@
-/*import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpInterceptor } from '@angular/common/http';
+import {
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+} from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Injectable()
-export class HttpErrorInterceptor implements HttpInterceptor {
+export class AuthInterceptor implements HttpInterceptor {
   constructor(
     public router: Router,
     private auth: AuthService) {}
@@ -16,4 +20,3 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     return next.handle(authReq);
   }
 }
-*/

@@ -13,7 +13,8 @@ import { User } from 'src/app/home/modules/admin/users/user';
   providedIn: 'root'
 })
 export class AuthService {
-  public static TOKEN: string = 'accessToken';
+  public static TOKEN: string = 'Authorization';
+  public static REFRESH_TOKEN: string = 'refreshtoken';
 
   url: string;
   helper : JwtHelperService = new JwtHelperService();
@@ -46,7 +47,7 @@ export class AuthService {
     return this.httpClient.post(this.url, credentials).pipe(
       tap((res: any) => {
         console.log('RESPOSTA: ', res)
-        localStorage.setItem(AuthService.TOKEN, res.data.accessToken);
+        localStorage.setItem(AuthService.TOKEN, 'Bearer ' + res.data.accessToken);
       })
     );
   }
@@ -54,8 +55,7 @@ export class AuthService {
   public getUser(): string {
     let jwt = localStorage.getItem(AuthService.TOKEN)?.toString();
     let token = this.helper.decodeToken(jwt) as Token;
-
-    return token.name.toString();
+    return token?.nome;
   }
 
   public getUserId(): string {
@@ -67,10 +67,31 @@ export class AuthService {
 
   public logout(): boolean {
     localStorage.removeItem(AuthService.TOKEN);
-    //localStorage.clear();
+    localStorage.clear();
     this.updateLoggedIn();
     this.router.navigate(['/login'])
     return true;
+  }
+
+  public hasCurrentUser(): boolean {
+    return localStorage.getItem(AuthService.TOKEN) != null;
+  }
+
+  public getToken(): string {
+    return localStorage.getItem(AuthService.TOKEN) || '';
+  }
+
+  public isLogged() : boolean{
+    return !this.helper.isTokenExpired(this.getToken());
+  }
+
+  public refreshToken(): Observable<any> {
+    return this.httpClient.post(this.url + '/revalidar-token', {refreshtoken: localStorage.getItem(AuthService.REFRESH_TOKEN)}).pipe(
+      tap((res: any) => {
+        localStorage.setItem(AuthService.TOKEN, 'Bearer ' + res.authtoken);
+        localStorage.setItem(AuthService.REFRESH_TOKEN, 'Bearer ' + res.refreshtoken);
+      }),
+    );
   }
 
   public updateLoggedIn(): void {

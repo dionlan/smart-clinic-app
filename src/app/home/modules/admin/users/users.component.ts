@@ -43,23 +43,17 @@ export class UsersComponent implements OnInit, OnDestroy {
       senha: ['', []]
     });
     this.form = this.formBuilder.group({
-      name: ['', []],
+      id: ['', []],
+      nome: ['', []],
       email: ['', []],
-      cpf: ['', []],
-      radio_status: ['true', []],
-      profileId: [[], []],
+      ativo: ['', []],
+      perfil: ['', []],
+      perfilDescricao: ['', []],
+      dataCadastro: ['', []],
     });
     this.params = this.form.getRawValue() as SearchParams;
+    console.log('PARAMS USERS:', this.params)
     this.list();
-    let paramsProfile:SP = {'radio_status':'true'} as SP;
-    this.profilesService.list(paramsProfile).subscribe(
-      (res) => {
-        this.profiles = res;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
     this.subscribeOnEmptyResult();
   }
 
@@ -73,10 +67,8 @@ export class UsersComponent implements OnInit, OnDestroy {
     });
   }
 
-
-
   public profileNames(user: User): string {
-    return user.perfis.map((p) => p.nome).join(', ');
+    return ''//user.perfis.map((p) => p.nome).join(', ');
   }
 
   public search($event:any): void {
@@ -87,9 +79,14 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   private list(): void {
-    this.userService.list(this.params).subscribe(
+    let params = this.params;
+    params.PageNumber = 1;
+    params.PageSize = 10;
+    console.log('USERS LIST PARAMS:', this.params)
+    this.userService.listUsers(this.params).subscribe(
       (res) => {
-        this.result = res;
+        this.result = res.items;
+        console.log('RESULTADO USUARIOS:', res);
       },
       (error) => {
         console.error(error);
@@ -120,61 +117,10 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   public reset(){
-        this.form = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       name: ['', []],
-      email: ['', []],
-      cpf: ['', []],
-      radio_status: ['true', []],
-      profileId: [[], []],
+      email: ['', []]
     });
     this.search(null);
-  }
-
-  public openReset(content: any, user: User) {
-    this.formReset.get("senha")?.setValue("");
-    this.modalService.open(content, {}).result.then(
-      (result) => {
-        let login: Credentials = this.formReset.getRawValue() as Credentials;
-
-        this.authService.checkUser(login).subscribe(
-          (res) => {
-            if(res){
-              this.authService
-                .resetPasswordUser(user)
-                .subscribe(
-                  (success)=>{
-                    this.message.add({
-                      severity: 'success',
-                      summary: this.translateService.instant('Resetar senha'),
-                      detail: this.translateService.instant('message.success')
-                    });
-                },
-                (err) =>{
-
-                });
-
-            } else {
-              this.message.add({
-                severity: 'error',
-                summary: 'Senha inválida'
-              });
-            }
-          },
-          (error) => {
-            console.error(error);
-          }
-        );
-      },
-      (reason) => {     }
-    );
-  }
-
-  public open(content: any, user: User) {
-    this.modalService.open(content, {}).result.then(
-      (result) => {
-        this.delete(user);
-      },
-      (reason) => {}
-    );
   }
 }

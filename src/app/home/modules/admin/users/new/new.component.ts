@@ -72,14 +72,14 @@ export class NewComponent extends FormComponent implements OnInit {
     }
 
     let user: User = this.userForm.getRawValue() as User;
-    user.perfis = [] as Profile[];
-    user.profileId.forEach(item =>{
+    /*user.perfil = [] as Profile[];
+    user.perfil.forEach(item =>{
       let profile: Profile = {
         'id':item
       } as Profile;
 
       user.perfis.push(profile);
-    })
+    })*/
 
     this.userService.create(user).subscribe(
       () => {

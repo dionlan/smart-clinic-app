@@ -1,5 +1,5 @@
 export interface Token{
     sub:string,
-    name:string,
+    nome:string,
     permissions:string[]
 }

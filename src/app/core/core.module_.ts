@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+/*import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import { ErrorInterceptor } from './interceptors/error-interceptor';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
-import { TokenInterceptor } from './interceptors/token.interceptor';
+import { TokenInterceptor } from './interceptors/token.interceptor_';
 
 const CORE_COMPONENTS = [
 ];
@@ -22,7 +22,7 @@ const MODULES = [RouterModule];
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
+      useClass: ErrorInterceptor,
       multi: true,
     },
     {
@@ -40,4 +40,4 @@ export class CoreModule {
       );
     }
   }
-}
+}*/

@@ -1,34 +1,21 @@
-import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { LoadingService } from '../services/loading.service';
-import { finalize } from 'rxjs/operators';
+import {HttpHandler, HttpInterceptor, HttpRequest,} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {finalize} from 'rxjs/operators';
+import {LoadingService} from "../../home/modules/layout/loading/loading.service";
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
-  private activeRequests = 0; //requisições ativas enviadas ao backend
-  constructor(private loadingService: LoadingService) {}
+  constructor(
+    private loadingService: LoadingService
+  ) {
+  }
 
-  //intercepta cada requição e realiza alguma operação
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if(this.activeRequests === 0){
-      this.loadingService.show();
-    }
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    this.loadingService.show();
 
-    this.activeRequests++;
-
-    return next.handle(request).pipe(
+    return next.handle(req).pipe(
       finalize(() => {
-        this.activeRequests--;
-
-        if(this.activeRequests === 0){
-          this.loadingService.hide();
-        }
+        this.loadingService.hide();
       })
     );
   }

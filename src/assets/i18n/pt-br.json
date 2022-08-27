@@ -25,7 +25,7 @@
         },
         "second": {
           "text1": "Por favor, tente novamente em alguns intantes ou se preferir, entre em contato com o nosso suporte",
-          "text2": "centraldeservicos@sefaz.ma.gov.br"
+          "text2": "smartclinic@smartclinic"
         },
         "enter": "Entrar"
       }
@@ -36,7 +36,7 @@
       "breadcrumb": "home"
     },
     "header": {
-      "title": "Sistema de Gerenciamento e Configuração",
+      "title": "OMNES",
       "menu": {
         "user-data": "Meus dados",
         "change-password": "Alterar senha",
@@ -62,6 +62,315 @@
       "patients": {
         "title": "Pacientes"
       }
+    },
+    "admin": {
+      "breadcrumb": "Administração",
+      "users": {
+        "breadcrumb": "Usuários",
+        "index": {
+          "breadcrumb": "Listagem",
+          "header": "Usuários"
+        },
+        "search": {
+          "name": {
+            "label": "Usuário",
+            "placeholder": "Pesquisar nome do usuário"
+          },
+          "email": {
+            "label": "E-mail",
+            "placeholder": "Pesquisar e-mail do usuário"
+          },
+          "cpf": {
+            "label": "CPF",
+            "placeholder": "Pesquisar cpf do usuário"
+          },
+          "status": {
+            "label": "Status",
+            "all": "Todos",
+            "active": "Ativos",
+            "inactive": "Inativos"
+          },
+          "profile": {
+            "label": "Perfil",
+            "all": "Todos"
+          },
+          "button": {
+            "search": "Pesquisar",
+            "reset": "Limpar",
+            "new": "Cadastrar Usuário"
+          }
+        },
+        "table": {
+          "col": {
+            "name": "Usuário",
+            "email": "E-mail",
+            "active": "Status",
+            "profile": "Função",
+            "register-date": "Data Cadastro",
+            "actions": {
+              "header": "Ação",
+              "title": {
+                "edit": "Editar",
+                "activate": "Ativar",
+                "inactivate": "Inativar",
+                "delete": "Excluir",
+                "reset":"Resetar Senha"
+              }
+            },
+            "status": {
+              "active": "Ativo",
+              "inactive": "Inativo"
+            }
+          }
+        },
+        "confirm-dialog": {
+          "title": "Confirmar Exclusão",
+          "message": "Se você tem certeza que deseja excluir o usuário, entre com a sua senha, mas atenção: esta ação não tem volta!",
+          "button": {
+            "ok": "Sim",
+            "cancel": "Não"
+          }
+        },
+        "confirm-reset": {
+          "title": "Confirmar nova senha",
+          "message": "Para enviar uma  nova senha ao usuário, entre com a sua senha, mas atenção: esta ação não tem volta!",
+          "button": {
+            "ok": "Confirmar",
+            "cancel": "Cancelar"
+          }
+        },
+        "new": {
+          "breadcrumb": "Cadastrar Usuário",
+          "role": "Cadastrar Usuário",
+          "header": "Cadastrar usuário"
+        },
+        "edit": {
+          "breadcrumb": "Editar Usuário",
+          "role": "Editar Usuário",
+          "header": "Editar usuário"
+        },
+        "delete":{
+          "role": "Excluir Usuário"
+        },
+        "form": {
+          "empty": {
+            "label": "Não foram selecionadas funcionalidades"
+          },
+          "name": {
+            "label": "Nome"
+          },
+          "comp-name": {
+            "label": "(como você quer ser chamada(o) no SGC)"
+          },
+          "email": {
+            "label": "E-mail"
+          },
+          "password": {
+            "label": "Senha"
+          },
+          "profile": {
+            "label": "Perfil"
+          },
+          "status": {
+            "label": "Status",
+            "active": "Ativo",
+            "inactive": "Inativo",
+            "all": "Todos"
+          },
+          "reset-password": {
+            "label": "Redefinir senha padrão",
+            "default": "Sistema1234"
+          },
+          "button": {
+            "submit": "Incluir usuário",
+            "update": "Salvar alterações",
+            "reset" : "Resetar senha",
+            "cancel": "Cancelar",
+            "delete": "Excluir usuário"
+          }
+        }
+      },
+      "profiles": {
+        "breadcrumb": "Perfis",
+        "index": {
+          "breadcrumb": "",
+          "header": "Perfis"
+        },
+        "search": {
+          "form": {
+            "name": {
+              "label": "Perfil",
+              "placeholder": "Pesquisar nome do perfil"
+            },
+            "funcionalidade":{
+              "label": "Funcionalidade",
+              "select":"Selecione uma funcionalidade"
+            },
+            "button": {
+              "search": "Pesquisar",
+              "new": "Cadastrar perfil"
+            }
+          }
+        },
+        "table": {
+          "col": {
+            "profile": "Perfil",
+            "permissions": "Funcionalidade",
+            "active": "Status",
+            "actions": {
+              "header": "Ação",
+              "title": {
+                "edit": "Editar",
+                "activate": "Ativar",
+                "inactivate": "Inativar",
+                "delete": "Excluir"
+              }
+            },
+            "status": {
+              "active": "Ativo",
+              "inactive": "Inativo"
+            }
+          }
+        },
+        "confirm-dialog": {
+          "title": "Confirmar Exclusão",
+          "message": "Se você tem certeza que deseja excluir o perfil, entre com a sua senha:",
+          "button": {
+            "ok": "Confirmar",
+            "cancel": "Cancelar"
+          }
+        },
+        "new": {
+          "breadcrumb": "Cadastrar Perfil",
+          "role": "Cadastrar Perfil",
+          "header": "Cadastrar perfil"
+        },
+        "edit": {
+          "breadcrumb": "Editar Perfil",
+          "role": "Editar Perfil",
+          "header": "Editar perfil"
+        },
+        "form": {
+          "warning":{
+            "label":"Cuidado!",
+            "message": "Este item possui vínculo com usuários vinculados a ele."
+          },
+          "name": {
+            "label": "Nome do perfil"
+          },
+          "status": {
+            "label": "Status",
+            "active": "Ativo",
+            "inactive": "Inativo",
+            "all": "Todos"
+          },
+          "tab":{
+            "button":{
+              "all":"Selecionar tudo"
+            },
+            "profile":{
+              "header":"O seu novo Perfil está assim",
+              "empty":{
+                "none":"Nenhuma",
+                "end":"permissão garantida"
+              },
+              "all":{
+                  "init":"Todas",
+                  "end":"as permissões garantidas"
+              }
+            },
+            "header":{
+              "home":"Início",
+              "admin":"Administração",
+               "website":"Portal",
+               "faq":"FAQ",
+               "knowledge":"Base de Conhecimento",
+               "chat":"Atendimento Chat",
+               "demand":"Demanda",
+               "schedule":"Agendamento",
+               "app":"Aplicativo"
+            },
+
+            "admin":{
+              "users":"Usuários",
+              "profile":"Perfis"
+            }
+          },
+          "permissions": {
+            "label": "Funcionalidades"
+          },
+          "modules": {
+            "label": "Escolha um módulo do sistema"
+          },
+          "button": {
+            "create": "Incluir novo perfil",
+            "update": "Salvar alterações",
+            "delete": "Excluir perfil",
+            "cancel": "Cancelar"
+          }
+        }
+      }
+    }
+  },
+  "validator": {
+    "required": "Campo obrigatório",
+    "requiredTrue": "O campo precisa ser verdadeiro",
+    "nullValidator": "O campo não pode ser nulo",
+    "email": "E-mail inválido",
+    "minlength": "O campo deve ter no mínimo %requiredLength% caracteres",
+    "maxlength": "O campo deve ter no máximo %requiredLength% caracteres",
+    "min": "O campo deve ter o valor mínimo de %min%",
+    "max": "O campo deve ter o valor máximo de %max%",
+    "pattern": "Por favor, verifique os dados deste campo!",
+    "customValidatorPattern": "Por favor, verifique os dados deste campo!"
+  },
+  "shared": {
+    "emptyResult": "Nenhum resultado encontrado para sua pesquisa",
+    "clearSearch": "Limpar pesquisa",
+    "select": "Selecione",
+    "yes": "Sim",
+    "no": "Não",
+    "confirm-dialog": {
+      "delete": {
+        "title": "Confirmar exclusão"
+      },
+      "button": {
+        "ok": "Sim",
+        "cancel": "Não"
+      }
+    },
+    "dialog": {
+      "save": "Salvar",
+      "cancel": "Cancelar"
+    },
+    "export": {
+      "csv": "Exportar para CSV",
+      "pdf": "Exportar para PDF",
+      "xls": "Exportar para XLS"
+    },
+    "views": "visualizações",
+    "noResults": "Nenhum resultado encontrado",
+    "noOneInTheLine": "Não há ninguém na fila"
+  },
+  "table": {
+    "actions": {
+      "header": "Ação",
+      "title": {
+        "edit": "Editar",
+        "activate": "Ativar",
+        "inactivate": "Inativar",
+        "delete": "Excluir",
+        "publish": "Publicar",
+        "unpublish": "Despublicar",
+        "delete-inactive": "Você não pode excluir este item porque existem departamentos associados à este Local.",
+        "move": "Mover",
+        "add": "Adicionar",
+        "save": "Salvar",
+        "cancel": "Cancelar"
+      }
+    },
+    "pagination": {
+      "currentPageReportTemplate": "Exibindo {first} até {last} de {totalRecords} linhas"
     }
   }
 }

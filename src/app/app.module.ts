@@ -4,7 +4,6 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
-import { CoreModule } from './core/core.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -16,6 +15,9 @@ import { SharedModule } from './shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeModule } from './home/home.module';
 import { MenuService } from './shared/menu/menu.service';
+import { httpInterceptorProviders } from './core/interceptors';
+import { MessageService } from 'primeng/api';
+import {ToastModule} from "primeng/toast";
 
 registerLocaleData(ptBr)
 
@@ -25,6 +27,7 @@ registerLocaleData(ptBr)
     SharedModule,
     BrowserModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'pt-br',
@@ -35,16 +38,16 @@ registerLocaleData(ptBr)
       },
     }),
     HomeModule,
-    NgbModule,
     AuthModule,
-    CoreModule,
-    AppRoutingModule,
     FontAwesomeModule,
+    ToastModule
   ],
   providers: [
     Title,
     TranslateService,
     MenuService,
+    httpInterceptorProviders,
+    MessageService,
     {
       provide: APP_INITIALIZER,
       useFactory: ApplicationInitializerFactory,

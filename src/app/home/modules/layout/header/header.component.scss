@@ -1,9 +1,9 @@
-$background-color: #074368;
+$background-color: #eaeaea;
 $font-color: #ABBAC7;
 
 #sidebarToggle {
   font-size: 1.5rem !important;
-  color: #468FB3 !important;
+  color: #d4d4d4 !important;
 }
 
 header {
@@ -79,10 +79,6 @@ header .logout {
   color: #468fb3;
 }
 
-.pointer {
-  cursor: pointer;
-}
-
 .nav-content-right {
   width: 50%;
   display: flex;
@@ -98,6 +94,7 @@ header .logout {
 .nav-content-right .link-user {
   text-decoration: none;
   color: #fff;
+  cursor: pointer;
 }
 
 @media (max-width: 990px) {

@@ -25,25 +25,21 @@ export class HeaderComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private fileService: FileService,
-    private sanitizer: DomSanitizer,
      private router: Router) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem(AuthService.TOKEN) as any;
     const userData = jwt_decode(token) as any;
-    this.nomeUsuario = userData.name as string;
+    this.nomeUsuario = userData.nome as string;
     this.idUsuario = userData.sub as string;
     this.userService.find(this.idUsuario).subscribe(
-      res=>{
-        // this.idImagem = res.imagem.id;
-        if(res.imagem !== null){
-          this.fileService.download(res.imagem.nome).subscribe(value => {
-            const blob = new Blob([value], {type: value.type});
-            this.srcImage = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob));
-          });
-        }
-    });
+      (res) => {
+        console.log('USUARIO ENCONTRADO:', res)
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   public toggleMenu() {

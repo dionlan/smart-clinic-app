@@ -15,7 +15,8 @@ export class LoginComponent extends FormComponent implements OnInit  {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService, private router: Router){
+    private authService: AuthService,
+    private router: Router){
       super();
    }
 
@@ -42,16 +43,11 @@ export class LoginComponent extends FormComponent implements OnInit  {
     }
     this.authService.login(login).subscribe(
       (res) => {
-        this.router.navigate(['home']);
+        this.router.navigate(['inicio/home']);
       },
       (error) => {
         console.error(error);
       }
     );
-
-    /*if(this.loginForm.valid){
-      console.log('FORM: ', this.loginForm)
-      this.authService.login(this.loginForm.value);
-    }*/
   }
 }

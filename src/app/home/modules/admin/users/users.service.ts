@@ -12,24 +12,25 @@ export class UserService {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = environment.baseUrl + '/admin/usuarios';
+    this.url = environment.baseUrl + '/usuario';
   }
 
   list(searchParams: SearchParams | null): Observable<any> {
     let params = new HttpParams();
     if (searchParams != null) {
       if (searchParams.name) params = params.set('nome', searchParams.name);
-      if (searchParams.email) params = params.set('email', searchParams.email);
-      if (searchParams.cpf) params = params.set('cpf', searchParams.cpf);
-      if (searchParams.radio_status)
-        params = params.set('status', searchParams.radio_status);
-      if (searchParams.profileId.length > 0){
-
-        params = params.set('idPerfil', searchParams.profileId.toString() );
-      }
-
     }
     return this.httpClient.get<User>(this.url, { params: params });
+  }
+
+  listUsers(searchParams: SearchParams | null): Observable<any> {
+    let params = new HttpParams();
+    if (searchParams != null) {
+      if (searchParams.PageNumber) params = params.set('PageNumber', searchParams.PageNumber);
+      if (searchParams.PageSize) params = params.set('PageSize', searchParams.PageSize);
+    }
+    console.log('PARAMS?:', params)
+    return this.httpClient.get<User>(this.url + '/paginado', { params: params });
   }
 
   find(id: string | null): Observable<User> {

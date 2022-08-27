@@ -16,7 +16,7 @@ export class PermissionsService {
   permissions: Subject<any> = new Subject();
 
   constructor(private httpClient: HttpClient) {
-    this.url = environment.baseUrl + '/admin/permissoes';
+    this.url = environment.baseUrl + '/dominio/permissoes';
   }
 
   list(): Observable<Permission[]> {
@@ -24,7 +24,7 @@ export class PermissionsService {
   }
 
   listControllers(): Observable<string[]> {
-    return this.httpClient.get<string[]>(this.url + '/controllers');
+    return this.httpClient.get<string[]>(this.url + '/dominio/permissoes-concedidas');
   }
 
   setSubjectPermission(value : any){

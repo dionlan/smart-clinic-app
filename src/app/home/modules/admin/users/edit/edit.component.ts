@@ -80,16 +80,15 @@ export class EditComponent extends FormComponent implements OnInit {
       (res: User) => {
         this.user = res;
         let arrIdPermission: number[] = [] ;
-
+        /*
         res.perfis.forEach(x => {
           arrIdPermission.push(x.id);
-        })
+        })*/
         this.form.patchValue(res);
         this.form.get('ativo')?.setValue(res.ativo ? 'true' : 'false');
-        this.form.get('imagem')?.setValue(res.imagem)
-        this.form
+        /*this.form
           .get('profileId')
-          ?.setValue(res.perfis.length > 0 ? arrIdPermission : []);
+          ?.setValue(res.perfis.length > 0 ? arrIdPermission : []);*/
       },
       (error) => {
         console.error(error);
@@ -99,14 +98,14 @@ export class EditComponent extends FormComponent implements OnInit {
 
   public update(): void {
     let user: User = this.form.getRawValue() as User;
-    user.perfis = [] as Profile[];
+    /*user.perfis = [] as Profile[];
     user.profileId.forEach(item =>{
       let profile: Profile = {
         'id':item
       } as Profile;
 
       user.perfis.push(profile);
-    })
+    })*/
 
     this.validate(this.form);
     if (this.form.invalid) {

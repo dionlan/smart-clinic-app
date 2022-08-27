@@ -10,10 +10,10 @@ export class IndexService {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = environment.baseUrl + '/inicio/home';
+    this.url = environment.baseUrl + '/usuario/paginado';
   }
 
   getData(): Observable<any> {
-    return this.httpClient.get(this.url, { });
+    return this.httpClient.get<any>(this.url, {});
   }
 }
