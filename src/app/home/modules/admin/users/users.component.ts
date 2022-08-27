@@ -9,7 +9,7 @@ import { User } from './user';
 import { UserService } from './users.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from "rxjs";
-import {MessageService} from "primeng/api";
+import {MessageService, PrimeNGConfig} from "primeng/api";
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Credentials } from 'src/app/auth/models/credentials.mode';
@@ -35,10 +35,12 @@ export class UsersComponent implements OnInit, OnDestroy {
     private message: MessageService,
     private translateService: TranslateService,
     private authService: AuthService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private primengConfig: PrimeNGConfig
   ) {}
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
     this.formReset = this.formBuilder.group({
       senha: ['', []]
     });

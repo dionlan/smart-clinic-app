@@ -27,7 +27,7 @@
   <hr class="my-4">
   <section class="new">
     <div class="col-md-12" style="text-align: right !important;">
-      <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/admin', 'usuarios', 'novo']">
+      <button class="btn btn-success btn-sm" [routerLink]="['/admin', 'usuarios', 'novo']">
         <i class="fa fa-plus-circle"></i>
         {{ "home.admin.users.search.button.new" | translate }}
       </button>
@@ -36,7 +36,7 @@
 
   <app-empty-result *ngIf="!result.length" [subject]="onEmptyResultSubject"></app-empty-result>
   <section class="results mt-3" *ngIf="result.length">
-    <p-table [value]="result" [rows]="5" [showCurrentPageReport]="true"
+    <p-table [value]="result" [rows]="10" [showCurrentPageReport]="true"
       [rowsPerPageOptions]="[5, 10, 15]" [paginator]="true"
       currentPageReportTemplate="Exibindo {first} até {last} de {totalRecords} linhas">
       <ng-template pTemplate="header">

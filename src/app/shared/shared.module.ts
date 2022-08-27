@@ -8,6 +8,7 @@ import { EmptyResultComponent } from "./result-empty/empty-result.component";
 import { NoResultComponent } from "./no-result/no-result.component";
 import { MessagesModule } from "primeng/messages";
 import { ToastModule } from "primeng/toast";
+import { RippleModule } from 'primeng/ripple';
 
 const SHARED_COMPONENTS = [
   CommonModule,
@@ -19,6 +20,7 @@ const SHARED_COMPONENTS = [
   NoResultComponent,
   InputFeedbackComponent,
   EmptyResultComponent,
+  RippleModule
 
   ];
 
