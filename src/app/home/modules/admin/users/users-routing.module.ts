@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditComponent } from './edit/edit.component';
 import { NewComponent } from './new/new.component';
 import { UsersComponent } from './users.component';
-import {UserResolver} from "./user.resolver";
+import { UserResolver } from "./user.resolver";
 
 const routes: Routes = [
   {
@@ -31,10 +31,8 @@ const routes: Routes = [
     data: {
       breadcrumb: 'home.admin.users.edit.breadcrumb',
       roles: ['home.admin.users.edit.role']
-    },
-    // canActivate:[AuthGuard]
+    }
   },
-
 ];
 
 @NgModule({

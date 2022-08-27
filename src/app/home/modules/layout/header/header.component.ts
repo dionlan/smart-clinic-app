@@ -1,11 +1,9 @@
 import { SafeUrl } from '@angular/platform-browser';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from "rxjs";
 import jwt_decode from 'jwt-decode';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { FileService } from 'src/app/shared/file/file.service';
 import { UserService } from '../../admin/users/users.service';
 
 @Component({

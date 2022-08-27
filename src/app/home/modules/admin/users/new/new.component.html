@@ -45,16 +45,6 @@
             <label class="form-check-label">{{ "home.admin.users.form.status.inactive" | translate }}</label>
         </div>
       </div>
-
-      <div class="col-md-12">
-        <label for="imagem">
-          {{ "home.admin.users.form.photo.label" | translate }}
-          <span style="font-size: small;">{{ "home.admin.users.form.photo.formats" | translate }}</span>
-        </label>
-        <app-file-upload id="imagem" [control]="userForm.get('imagem')"></app-file-upload>
-        <input-feedback [control]="userForm.get('imagem')"></input-feedback>
-      </div>
-
       <hr class="my-4">
 
       <div class="col-md-12 text-right">

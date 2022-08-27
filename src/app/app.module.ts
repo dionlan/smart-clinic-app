@@ -17,7 +17,8 @@ import { HomeModule } from './home/home.module';
 import { MenuService } from './shared/menu/menu.service';
 import { httpInterceptorProviders } from './core/interceptors';
 import { MessageService } from 'primeng/api';
-import {ToastModule} from "primeng/toast";
+import { ToastModule } from "primeng/toast";
+import { LayoutModule } from './home/modules/layout/layout.module';
 
 registerLocaleData(ptBr)
 
@@ -38,9 +39,11 @@ registerLocaleData(ptBr)
       },
     }),
     HomeModule,
+    LayoutModule,
     AuthModule,
+    NgbModule,
     FontAwesomeModule,
-    ToastModule
+    ToastModule,
   ],
   providers: [
     Title,

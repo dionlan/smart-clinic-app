@@ -52,7 +52,6 @@ export class UsersComponent implements OnInit, OnDestroy {
       dataCadastro: ['', []],
     });
     this.params = this.form.getRawValue() as SearchParams;
-    console.log('PARAMS USERS:', this.params)
     this.list();
     this.subscribeOnEmptyResult();
   }
@@ -67,10 +66,6 @@ export class UsersComponent implements OnInit, OnDestroy {
     });
   }
 
-  public profileNames(user: User): string {
-    return ''//user.perfis.map((p) => p.nome).join(', ');
-  }
-
   public search($event:any): void {
     if($event!=null )$event.preventDefault();
     this.params = this.form.getRawValue() as SearchParams;
@@ -82,7 +77,6 @@ export class UsersComponent implements OnInit, OnDestroy {
     let params = this.params;
     params.PageNumber = 1;
     params.PageSize = 10;
-    console.log('USERS LIST PARAMS:', this.params)
     this.userService.listUsers(this.params).subscribe(
       (res) => {
         this.result = res.items;

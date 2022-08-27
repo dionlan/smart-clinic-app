@@ -14,6 +14,7 @@ import { User } from 'src/app/home/modules/admin/users/user';
 })
 export class AuthService {
   public static TOKEN: string = 'Authorization';
+  public static ACCESS_TOKEN: string = 'accessToken';
   public static REFRESH_TOKEN: string = 'refreshtoken';
 
   url: string;
@@ -34,13 +35,6 @@ export class AuthService {
   public getSubjectEmail():Observable<any>{
     return this.subjectEmail.asObservable();
   }
-
-  /*
-  login(credentials: Credentials): void {
-    localStorage.setItem('token', credentials.password);
-    this.updateLoggedIn();
-    this.router.navigate(['/home'])
-  }*/
 
   public login(credentials: Credentials): Observable<any> {
     console.log(this.url, credentials)
