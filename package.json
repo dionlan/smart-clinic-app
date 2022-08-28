@@ -34,6 +34,7 @@
     "@types/lodash": "^4.14.179",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { HomeComponent } from './home.component';
 import { IndexComponent } from './modules/index/index.component';
 
@@ -11,6 +12,7 @@ const routes: Routes = [
       {
         path: '',
         component: IndexComponent,
+        canActivate: [ AuthGuard ], //para entrar na home, o AuthGuard deve retornar true;
         data: {
           breadcrumb: 'home.index.breadcrumb'
         }

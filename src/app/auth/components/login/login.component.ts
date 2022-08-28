@@ -43,10 +43,12 @@ export class LoginComponent extends FormComponent implements OnInit  {
     }
     this.authService.login(login).subscribe(
       (res) => {
-        this.router.navigate(['inicio/home']);
+
+        console.log('ressssssss LOGIN SUCESSO!', res)
+        this.router.navigate(['/home']);
       },
       (error) => {
-        console.error(error);
+        console.error('ERRO LOGIN',error);
       }
     );
   }

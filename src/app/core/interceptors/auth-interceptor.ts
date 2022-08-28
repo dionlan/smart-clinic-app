@@ -6,6 +6,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { LoadingService } from 'src/app/home/modules/layout/loading/loading.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -14,9 +15,15 @@ export class AuthInterceptor implements HttpInterceptor {
     private auth: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler):any {
-    const authReq = req.clone({
-      headers: req.headers.set(AuthService.TOKEN, this.auth.getToken()),
-    });
-    return next.handle(authReq);
+
+    try {
+      const authReq = req.clone({
+        headers: req.headers.set(AuthService.TOKEN, this.auth.getToken()),
+      });
+      console.log('AUTH INTERCEPTOR!:', authReq)
+      return next.handle(authReq);
+    } catch(error) {
+      console.log('ERROR TOKEN:', error)
+    }
   }
 }

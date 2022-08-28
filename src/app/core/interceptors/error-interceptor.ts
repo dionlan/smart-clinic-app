@@ -24,17 +24,24 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   addAuthHeader(request: any) {
     const authHeader = this.authService.getToken();
+    console.log('ADD AUTH HEADER:', authHeader)
     if (authHeader) {
-      return request.clone({
-        setHeaders: {
-          "Authorization": authHeader
-        }
-      });
+      try {
+        return request.clone({
+          setHeaders: {
+            "Authorization": 'Bearer ' + authHeader
+          }
+        });
+        // valid token format
+      } catch(error) {
+        console.log('ERROR CATCH INTERCEPTOR!')
+      }
     }
     return request;
   }
-/*
+
   refreshToken(): Observable<any> {
+    console.log('REFRESH TOKEN:')
     if (this.refreshTokenInProgress) {
       return new Observable(observer => {
         this.tokenRefreshed$.subscribe(() => {
@@ -55,7 +62,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           this.logout();
         }));
     }
-  }*/
+  }
 
   logout() {
     this.authService.logout();
@@ -63,9 +70,10 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   handleResponseError(error: any, request?: any, next?: any): any {
+    console.log('ERRRRRRRROR ERROR-INTERCEPTOR')
     let errorMessage = error.message;
     if (error.status === 401) {
-      console.log('ERRRRRRRROR 401 ERROR-INTERCEPTOR')
+
       /*return this.refreshToken().pipe(
         switchMap(() => {
           request = this.addAuthHeader(request);
@@ -92,6 +100,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       this.loadingService.hide();
       // this.logout();
     } else if (error.status === 400) {
+      console.log('ERROR-INTERCEPTOR status 400: ',error)
       if(error.error){
 
         if(typeof error.error == 'string'){
@@ -125,7 +134,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       //   detail: "Erro interno. Favor procurar o administrador do sistema."
       // });
     }else if (error.status === 409) {
-      console.log(error)
+      console.log('ERROR-INTERCEPTOR STATUS 409: ',error)
       var arrayError = error.url.split("/");
       if(arrayError[8] !== 'undefined' && arrayError[8] === 'finalizar-atendimento'){
         this.message.add({
@@ -165,10 +174,12 @@ export class ErrorInterceptor implements HttpInterceptor {
     //this.authService = this.injector.get(AuthService);
 
     // Handle request
-    request = this.addAuthHeader(request);
 
+    request = this.addAuthHeader(request);
+    console.log('INTERCEPT ERROR-INTERCEPTOR:', request)
     // Handle response
     return next.handle(request).pipe(catchError(error => {
+      console.log('INTERCEPT com ERRO ERROR-INTERCEPTOR:', error)
       return this.handleResponseError(error, request, next);
     }));
   }

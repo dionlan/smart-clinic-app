@@ -21,7 +21,6 @@ const SHARED_COMPONENTS = [
   InputFeedbackComponent,
   EmptyResultComponent,
   RippleModule
-
   ];
 
 @NgModule({

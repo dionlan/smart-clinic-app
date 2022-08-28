@@ -25,7 +25,7 @@ export class IndexComponent implements OnInit {
         console.log('RESULTADO HOME', this.index);
       },
       (error) => {
-        console.error(error);
+        console.error('ERROR INDEX NO GET DATA', error);
       }
     );
   }

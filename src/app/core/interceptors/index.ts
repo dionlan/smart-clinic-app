@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoggingInterceptor } from './logging-interceptor';
-import {ErrorInterceptor} from "./error-interceptor";
+import { ErrorInterceptor } from "./error-interceptor";
 import { AuthInterceptor } from './auth-interceptor';
 import { LoadingInterceptor } from './loading.interceptor';
 

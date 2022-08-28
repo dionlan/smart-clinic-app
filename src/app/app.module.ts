@@ -15,10 +15,10 @@ import { SharedModule } from './shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeModule } from './home/home.module';
 import { MenuService } from './shared/menu/menu.service';
-import { httpInterceptorProviders } from './core/interceptors';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from "primeng/toast";
 import { LayoutModule } from './home/modules/layout/layout.module';
+import { CoreModule } from './core/core.module';
 
 registerLocaleData(ptBr)
 
@@ -30,6 +30,9 @@ registerLocaleData(ptBr)
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    CoreModule,
+    AuthModule,
+    AppRoutingModule,
     TranslateModule.forRoot({
       defaultLanguage: 'pt-br',
       loader: {
@@ -40,7 +43,7 @@ registerLocaleData(ptBr)
     }),
     HomeModule,
     LayoutModule,
-    AuthModule,
+
     NgbModule,
     FontAwesomeModule,
     ToastModule,
@@ -49,7 +52,7 @@ registerLocaleData(ptBr)
     Title,
     TranslateService,
     MenuService,
-    httpInterceptorProviders,
+    //httpInterceptorProviders,
     MessageService,
     {
       provide: APP_INITIALIZER,

@@ -17,14 +17,7 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit{
   isLoggedIn$: Observable<boolean>;
-  title = 'smart-clinic-app';
   private unsubscribe: Subscription[] = [];
-  menuItems: MenuItem[] = [
-    {
-      matIcon: 'home',
-      routerLink: '/home',
-      toolTipText: 'Home'
-    }];
 
   constructor(
     private translate: TranslateService,
@@ -36,6 +29,7 @@ export class AppComponent implements OnInit{
     private router: Router) {
 
     this.isLoggedIn$ = this.authService.isLoggedIn$;
+    console.log('ISLOGGEIN app COMPONENT', this.isLoggedIn$)
   }
 
   ngOnInit() {
@@ -66,11 +60,9 @@ export class AppComponent implements OnInit{
       this.loadingService.hide(true);
       window.scrollTo(0, 0);
     });
-
     this.unsubscribe.push(loadingOffObservable);
     this.unsubscribe.push(loadingOnObservable);
   }
-
 
   ngOnDestroy() {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());

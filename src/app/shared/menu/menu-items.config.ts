@@ -1,7 +1,7 @@
 export const MenuItemsConfig = [
   {
     title: 'home.side-menu.admin.title',
-    icon: 'pi pi-cog',
+    icon: 'fa fa-cog fa-lg',
     routerLink: [''],
     children: [
       {
@@ -21,12 +21,12 @@ export const MenuItemsConfig = [
   },
   {
     title: 'home.side-menu.doctors.title',
-    icon: 'pi pi-users',
+    icon: 'fa fa-user-md fa-lg',
     routerLink: ['medicos'],
   },
   {
     title: 'home.side-menu.employees.title',
-    icon: 'pi pi-id-card',
+    icon: 'fa fa-id-badge fa-lg',
     routerLink: ['funcionarios'],
   },
   {

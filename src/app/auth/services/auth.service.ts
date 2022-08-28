@@ -14,7 +14,6 @@ import { User } from 'src/app/home/modules/admin/users/user';
 })
 export class AuthService {
   public static TOKEN: string = 'Authorization';
-  public static ACCESS_TOKEN: string = 'accessToken';
   public static REFRESH_TOKEN: string = 'refreshtoken';
 
   url: string;
@@ -36,12 +35,17 @@ export class AuthService {
     return this.subjectEmail.asObservable();
   }
 
-  public login(credentials: Credentials): Observable<any> {
-    console.log(this.url, credentials)
-    return this.httpClient.post(this.url, credentials).pipe(
+  public login(loginForm: Credentials): Observable<any> {
+    console.log('LOGIN FORM', loginForm)
+    return this.httpClient.post(this.url, loginForm).pipe(
       tap((res: any) => {
-        console.log('RESPOSTA: ', res)
-        localStorage.setItem(AuthService.TOKEN, 'Bearer ' + res.data.accessToken);
+        let token = '';
+        if(res.data?.accessToken){
+          token = res.data?.accessToken
+          localStorage.setItem(AuthService.TOKEN, token);
+        }
+
+        //this.updateLoggedIn();
       })
     );
   }
@@ -55,7 +59,6 @@ export class AuthService {
   public getUserId(): string {
     let jwt = localStorage.getItem(AuthService.TOKEN)?.toString();
     let token = this.helper.decodeToken(jwt) as Token;
-
     return token.sub.toString();
   }
 
@@ -82,17 +85,20 @@ export class AuthService {
   public refreshToken(): Observable<any> {
     return this.httpClient.post(this.url + '/revalidar-token', {refreshtoken: localStorage.getItem(AuthService.REFRESH_TOKEN)}).pipe(
       tap((res: any) => {
-        localStorage.setItem(AuthService.TOKEN, 'Bearer ' + res.authtoken);
-        localStorage.setItem(AuthService.REFRESH_TOKEN, 'Bearer ' + res.refreshtoken);
+        localStorage.setItem(AuthService.TOKEN, res.authtoken);
+        localStorage.setItem(AuthService.REFRESH_TOKEN, res.refreshtoken);
       }),
     );
   }
 
   public updateLoggedIn(): void {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('Authorization');
+    console.log('TOKEN:', token)
     if(token){
+      console.log('TOKEN NULL:', token)
       this.loggedIn.next(true);
     }else{
+      console.log('TOKEN not NULL:', token)
       this.loggedIn.next(false);
     }
   }

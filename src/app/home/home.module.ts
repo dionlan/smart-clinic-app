@@ -9,7 +9,6 @@ import {LayoutModule} from './modules/layout/layout.module';
 import {SkeletonModule} from "primeng/skeleton";
 import { MainPanelComponent } from './components/main-panel/main-panel.component';
 
-
 @NgModule({
   declarations: [
     HomeComponent,

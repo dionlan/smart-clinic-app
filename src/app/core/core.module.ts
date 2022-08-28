@@ -1,20 +1,35 @@
-/*import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LoadingComponent } from '../home/modules/layout/loading/loading.component';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
-import { TokenInterceptor } from './interceptors/token.interceptor_';
+import { LoggingInterceptor } from './interceptors/logging-interceptor';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 const CORE_COMPONENTS = [
+  LoadingComponent,
+  PageNotFoundComponent
 ];
-const MODULES = [RouterModule];
+const MODULES = [ RouterModule];
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, MODULES],
   exports: [],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
@@ -25,12 +40,7 @@ const MODULES = [RouterModule];
       useClass: ErrorInterceptor,
       multi: true,
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true,
-    },
-  ],
+  ]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule?: CoreModule) {
@@ -40,4 +50,4 @@ export class CoreModule {
       );
     }
   }
-}*/
+}

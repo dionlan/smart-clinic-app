@@ -21,23 +21,15 @@ export class HeaderComponent implements OnInit {
 
   @Input() toggleMenuSubject?: Subject<boolean>;
   constructor(
-    private userService: UserService,
     private authService: AuthService,
-     private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem(AuthService.TOKEN) as any;
     const userData = jwt_decode(token) as any;
+    console.log('USER DATA DECODE TOKEN :', userData)
     this.nomeUsuario = userData.nome as string;
     this.idUsuario = userData.sub as string;
-    this.userService.find(this.idUsuario).subscribe(
-      (res) => {
-        console.log('USUARIO ENCONTRADO:', res)
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
   }
 
   public toggleMenu() {

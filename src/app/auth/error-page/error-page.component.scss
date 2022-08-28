@@ -1,0 +1,45 @@
+:host {
+  width: 100%;
+}
+
+.internal-error {
+  display: flex;
+  flex-direction: column;
+}
+
+.internal-error .subtitle {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  font-size: 16px;
+  color: #707070;
+  font-weight: bold;
+}
+
+.internal-error .input-group {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #707070;
+  margin-bottom: 3vh;
+  color: #5b6c79;
+}
+
+.internal-error .input-icon {
+  position: absolute;
+  z-index: 5;
+  left: 95%;
+}
+
+.internal-error .confirm {
+  background-color: #468fb3;
+  margin-top: 8vh;
+  margin-bottom: 10px;
+}
+
+.internal-error .cancel {
+  margin-bottom: 5vh;
+  background-color: #707070;
+}
+
+.login label {
+  color: #707070;
+}
