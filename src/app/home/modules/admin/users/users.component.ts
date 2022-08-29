@@ -27,6 +27,8 @@ export class UsersComponent implements OnInit, OnDestroy {
   result: SearchResult[] = [];
   profiles: Profile[] = [];
   onEmptyResultSubject: Subject<boolean> = new Subject<boolean>();
+  switch: boolean = true;
+  checked: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,6 +51,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       nome: ['', []],
       email: ['', []],
       ativo: ['', []],
+      switch: [true],
       perfil: ['', []],
       perfilDescricao: ['', []],
       dataCadastro: ['', []],
@@ -82,7 +85,6 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.userService.listUsers(this.params).subscribe(
       (res) => {
         this.result = res.items;
-        console.log('RESULTADO USUARIOS:', res);
       },
       (error) => {
         console.error(error);

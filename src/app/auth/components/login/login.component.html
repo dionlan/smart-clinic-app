@@ -7,13 +7,15 @@
   <div class="mb-3">
     <label for="inputLogin" class="form-label">{{ 'auth.main.login.label.login' | translate }}</label>
     <input class="form-control" id="inputLogin" formControlName="email" [value]="loginForm.get('email')?.value"
-    placeholder="{{ 'auth.main.login.label.login' | translate }}" maxlength="60"/>
+    placeholder="{{ 'auth.main.login.label.login' | translate }}" maxlength="120"/>
+    <input-feedback [control]="loginForm.get('email')"></input-feedback>
   </div>
 
   <div class="mb-3">
     <label for="inputPassword" class="form-label">{{ 'auth.main.login.label.password' | translate }}</label>
     <input type="password" class="form-control" id="inputPassword" formControlName="password"
     placeholder="{{ 'auth.main.login.label.password' | translate }}">
+    <input-feedback [control]="loginForm.get('password')"></input-feedback>
   </div>
 
   <div class="mb-3">

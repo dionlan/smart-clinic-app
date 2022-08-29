@@ -15,6 +15,7 @@
         <input class="form-control" id="inputEmail" formControlName="email" />
         <input-feedback [control]="form.get('email')"></input-feedback>
       </div>
+
       <div class="col-md-12 text-right">
         <button type="button" class="btn btn-outline-primary btn-sm" (click)="reset()">{{ "home.admin.users.search.button.reset" | translate }}</button> &nbsp;
         <button type="submit" class="btn btn-primary btn-sm">
@@ -23,7 +24,6 @@
       </div>
     </form>
   </section>
-
   <hr class="my-4">
   <section class="new">
     <div class="col-md-12" style="text-align: right !important;">
@@ -36,84 +36,89 @@
 
   <app-empty-result *ngIf="!result.length" [subject]="onEmptyResultSubject"></app-empty-result>
   <section class="results mt-3" *ngIf="result.length">
-    <p-table [value]="result" [rows]="10" [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[5, 10, 15]" [paginator]="true"
-      currentPageReportTemplate="Exibindo {first} até {last} de {totalRecords} linhas">
-      <ng-template pTemplate="header">
-        <tr class="table-header">
-          <th pSortableColumn="nome">
-            {{ "home.admin.users.table.col.name" | translate }}
-            <p-sortIcon field="nome"></p-sortIcon>
-          </th>
-          <th pSortableColumn="email">
-            {{ "home.admin.users.table.col.email" | translate }}
-            <p-sortIcon field="email"></p-sortIcon>
-          </th>
-          <th pSortableColumn="profile">
-            {{ "home.admin.users.table.col.profile" | translate }}
-            <p-sortIcon field="profile"></p-sortIcon>
-          </th>
-          <th pSortableColumn="dataCadastro">
-            {{ "home.admin.users.table.col.register-date" | translate }}
-            <p-sortIcon field="dataCadastro"></p-sortIcon>
-          </th>
-          <th pSortableColumn="ativo">
-            {{ "home.admin.users.table.col.active" | translate }}
-            <p-sortIcon field="ativo"></p-sortIcon>
-          </th>
-          <th>
-            {{ "home.admin.users.table.col.actions.header" | translate }}
-          </th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-user>
-        <tr class="table-row">
-          <td><span class="d-block text-truncate">{{ user.nome }}</span></td>
-          <td><span class="d-block text-truncate">{{ user.email }}</span></td>
-          <td><span class="d-block text-truncate">{{ user.perfilDescricao  }}</span></td>
-          <td><span class="d-block text-truncate">{{ user.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span></td>
-          <td>
-            {{
-            user.ativo
-            ? ("home.admin.users.table.col.status.active" | translate)
-            : ("home.admin.users.table.col.status.inactive" | translate)
-            }}
-          </td>
-          <td>
-            <div class="actions">
-              <a class="fa fa-edit button-grid" title="{{
-                  'home.admin.users.table.col.actions.title.edit' | translate
-                }}" [routerLink]="['/admin', 'usuarios', 'edita', user.id]">
-              </a>
-              <a
-                *ngIf="user.ativo"
-                class="fa fa-times button-grid"
-                title="{{
-                  'home.admin.users.table.col.actions.title.inactivate'
-                    | translate
-                }}"
-                (click)="toggleActive(user)"
-              >
-              </a>
-              <a
-                *ngIf="!user.ativo"
-                class="fa fa-check button-grid"
-                title="{{
-                  'home.admin.users.table.col.actions.title.activate'
-                    | translate
-                }}"
-                (click)="toggleActive(user)"
-              ></a>
+    <form (ngSubmit)="search($event)" [formGroup]="form" >
+      <p-table [value]="result" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[5, 10, 15]" [paginator]="true"
+        currentPageReportTemplate="Exibindo {first} até {last} de {totalRecords} linhas">
+        <ng-template pTemplate="header">
+          <tr class="table-header">
+            <th pSortableColumn="nome">
+              {{ "home.admin.users.table.col.name" | translate }}
+              <p-sortIcon field="nome"></p-sortIcon>
+            </th>
+            <th pSortableColumn="email">
+              {{ "home.admin.users.table.col.email" | translate }}
+              <p-sortIcon field="email"></p-sortIcon>
+            </th>
+            <th pSortableColumn="profile">
+              {{ "home.admin.users.table.col.profile" | translate }}
+              <p-sortIcon field="profile"></p-sortIcon>
+            </th>
+            <th pSortableColumn="dataCadastro">
+              {{ "home.admin.users.table.col.register-date" | translate }}
+              <p-sortIcon field="dataCadastro"></p-sortIcon>
+            </th>
+            <th pSortableColumn="ativo">
+              {{ "home.admin.users.table.col.active" | translate }}
+              <p-sortIcon field="ativo"></p-sortIcon>
+            </th>
+            <th>
+              {{ "home.admin.users.table.col.actions.header" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+          <tr class="table-row">
+            <td><span class="d-block text-truncate">{{ user.nome }}</span></td>
+            <td><span class="d-block text-truncate">{{ user.email }}</span></td>
+            <td><span class="d-block text-truncate">{{ user.perfilDescricao  }}</span></td>
+            <td><span class="d-block text-truncate">{{ user.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span></td>
+            <td>
+              <span class="fw-bold d-flex align-items-center justify-content-evenly">
+                <p-inputSwitch formControlName="switch"></p-inputSwitch>
+                {{
+                user.ativo
+                ? ("home.admin.users.table.col.status.active" | translate | uppercase)
+                : ("home.admin.users.table.col.status.inactive" | translate | uppercase)
+                }}
+              </span>
+            </td>
+            <td>
+              <div class="actions">
+                <a class="fa fa-edit button-grid" title="{{
+                    'home.admin.users.table.col.actions.title.edit' | translate
+                  }}" [routerLink]="['/admin', 'usuarios', 'edita', user.id]">
+                </a>
+                <a
+                  *ngIf="user.ativo"
+                  class="fa fa-times button-grid"
+                  title="{{
+                    'home.admin.users.table.col.actions.title.inactivate'
+                      | translate
+                  }}"
+                  (click)="toggleActive(user)"
+                >
+                </a>
+                <a
+                  *ngIf="!user.ativo"
+                  class="fa fa-check button-grid"
+                  title="{{
+                    'home.admin.users.table.col.actions.title.activate'
+                      | translate
+                  }}"
+                  (click)="toggleActive(user)"
+                ></a>
 
-              <!-- <a class="fa fa-trash fa-2x destroy" title="{{
-                  'home.admin.users.table.col.actions.title.delete' | translate
-                }}" (click)="open(content, user)">
-              </a> -->
-            </div>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
+                <!-- <a class="fa fa-trash fa-2x destroy" title="{{
+                    'home.admin.users.table.col.actions.title.delete' | translate
+                  }}" (click)="open(content, user)">
+                </a> -->
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </form>
   </section>
 
   <ng-template #content let-modal>

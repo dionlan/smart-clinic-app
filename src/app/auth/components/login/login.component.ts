@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormComponent } from 'src/app/shared/form/form.component';
+import CustomValidator from 'src/app/shared/validators/custom-validator';
+import GenericValidator from 'src/app/shared/validators/generic.validator';
 import { Credentials } from '../../models/credentials.mode';
 import { AuthService } from '../../services/auth.service';
 
@@ -12,7 +14,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent extends FormComponent implements OnInit  {
   loginForm!: FormGroup;
-
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -22,8 +23,8 @@ export class LoginComponent extends FormComponent implements OnInit  {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.email, Validators.required] ],
-      password: ['', [Validators.required, Validators.minLength(3)]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -42,10 +43,8 @@ export class LoginComponent extends FormComponent implements OnInit  {
       return;
     }
     this.authService.login(login).subscribe(
-      (res) => {
-
-        console.log('ressssssss LOGIN SUCESSO!', res)
-        this.router.navigate(['/home']);
+      () => {
+        this.router.navigate(['home']);
       },
       (error) => {
         console.error('ERRO LOGIN',error);

@@ -29,7 +29,6 @@ export class UserService {
       if (searchParams.PageNumber) params = params.set('PageNumber', searchParams.PageNumber);
       if (searchParams.PageSize) params = params.set('PageSize', searchParams.PageSize);
     }
-    console.log('PARAMS?:', params)
     return this.httpClient.get<User>(this.url + '/paginado', { params: params });
   }
 

@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     const token = localStorage.getItem(AuthService.TOKEN) as any;
     const userData = jwt_decode(token) as any;
-    console.log('USER DATA DECODE TOKEN :', userData)
     this.nomeUsuario = userData.nome as string;
     this.idUsuario = userData.sub as string;
   }

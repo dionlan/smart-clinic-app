@@ -8,6 +8,7 @@ import { UsersComponent } from './users.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { EditComponent } from './edit/edit.component';
 import { HomeModule } from 'src/app/home/home.module';
+import { InputSwitchModule } from 'primeng/inputswitch'
 
 @NgModule({
   declarations: [UsersComponent, NewComponent, EditComponent],
@@ -17,7 +18,8 @@ import { HomeModule } from 'src/app/home/home.module';
         HomeModule,
         TableModule,
         CheckboxModule,
-        MultiSelectModule
+        MultiSelectModule,
+        InputSwitchModule
     ],
 })
 export class UsersModule {}

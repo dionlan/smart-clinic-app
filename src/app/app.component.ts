@@ -16,20 +16,16 @@ import { filter } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AppComponent implements OnInit{
-  isLoggedIn$: Observable<boolean>;
+
   private unsubscribe: Subscription[] = [];
 
   constructor(
     private translate: TranslateService,
-    private authService: AuthService,
     private loadingService: LoadingService,
     private titleService: Title,
     private breadcrumbsService: BreadcrumbService,
     private activatedRoute: ActivatedRoute,
     private router: Router) {
-
-    this.isLoggedIn$ = this.authService.isLoggedIn$;
-    console.log('ISLOGGEIN app COMPONENT', this.isLoggedIn$)
   }
 
   ngOnInit() {

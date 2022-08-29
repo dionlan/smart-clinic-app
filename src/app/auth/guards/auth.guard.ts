@@ -26,13 +26,11 @@ export class AuthGuard implements CanActivate {
     //this.authService.updateLoggedIn();
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean > | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log('CAN ACTIVATE ROUTE:', route);
       return this.checkRoute(route);
   }
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log('CAN ACTIVATE CHILD ROUTE:', childRoute);
     return this.checkRoute(childRoute);
   }
 

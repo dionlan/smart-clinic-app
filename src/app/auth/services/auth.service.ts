@@ -36,15 +36,10 @@ export class AuthService {
   }
 
   public login(loginForm: Credentials): Observable<any> {
-    console.log('LOGIN FORM', loginForm)
     return this.httpClient.post(this.url, loginForm).pipe(
       tap((res: any) => {
-        let token = '';
-        if(res.data?.accessToken){
-          token = res.data?.accessToken
-          localStorage.setItem(AuthService.TOKEN, token);
-        }
-
+        console.log('RES LOGIN:', res)
+        localStorage.setItem(AuthService.TOKEN, res.data.accessToken);
         //this.updateLoggedIn();
       })
     );
@@ -93,12 +88,9 @@ export class AuthService {
 
   public updateLoggedIn(): void {
     const token = localStorage.getItem('Authorization');
-    console.log('TOKEN:', token)
     if(token){
-      console.log('TOKEN NULL:', token)
       this.loggedIn.next(true);
     }else{
-      console.log('TOKEN not NULL:', token)
       this.loggedIn.next(false);
     }
   }
