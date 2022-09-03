@@ -24,7 +24,7 @@
       </div>
     </form>
   </section>
-  <hr class="my-4">
+  <hr class="my-3">
   <section class="new">
     <div class="col-md-12" style="text-align: right !important;">
       <button class="btn btn-success btn-sm" [routerLink]="['/admin', 'usuarios', 'novo']">
@@ -37,7 +37,7 @@
   <app-empty-result *ngIf="!result.length" [subject]="onEmptyResultSubject"></app-empty-result>
   <section class="results mt-3" *ngIf="result.length">
     <form (ngSubmit)="search($event)" [formGroup]="form" >
-      <p-table [value]="result" [rows]="10" [showCurrentPageReport]="true"
+      <p-table [value]="result" [rows]="5" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[5, 10, 15]" [paginator]="true"
         currentPageReportTemplate="Exibindo {first} até {last} de {totalRecords} linhas">
         <ng-template pTemplate="header">
@@ -89,7 +89,7 @@
                     'home.admin.users.table.col.actions.title.edit' | translate
                   }}" [routerLink]="['/admin', 'usuarios', 'edita', user.id]">
                 </a>
-                <a
+                <!-- <a
                   *ngIf="user.ativo"
                   class="fa fa-times button-grid"
                   title="{{
@@ -107,7 +107,7 @@
                       | translate
                   }}"
                   (click)="toggleActive(user)"
-                ></a>
+                ></a> -->
 
                 <!-- <a class="fa fa-trash fa-2x destroy" title="{{
                     'home.admin.users.table.col.actions.title.delete' | translate

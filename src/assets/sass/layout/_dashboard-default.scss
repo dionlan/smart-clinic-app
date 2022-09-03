@@ -11,8 +11,6 @@
     z-index: $zindex-sidenav;
     // Mobile first transform - by default the sidenav will be moved off-canvas
     transform: translateX(-$sidenav-base-width);
-    height: calc(100vh - #{$topnav-base-height});
-    width: 220px;
   }
   // Wraps the content when using the sidenav layout
   #layoutSidenav_content {

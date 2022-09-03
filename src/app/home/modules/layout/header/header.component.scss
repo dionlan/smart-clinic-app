@@ -1,4 +1,4 @@
-$background-color: #eaeaea;
+/*$background-color: #eaeaea;
 $font-color: #ABBAC7;
 
 #sidebarToggle {
@@ -67,22 +67,27 @@ header .nav-link {
 header .menu {
   display: flex;
   align-items: center;
-}
+}*/
 
 header .username {
   margin: 0 2px 0 8px;
-  font-size: 14px;
 }
 
+/*
 header .logout {
   margin: 0 16px;
   color: #468fb3;
+}*/
+.nav-toggle-left .link-user {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
 }
 
 .nav-content-right {
-  width: 50%;
+  width: 100%;
   display: flex;
-  margin-right: 2.5em;
+  margin-right: 1em;
   justify-content: right;
   align-items: center;
 }
@@ -93,7 +98,7 @@ header .logout {
 
 .nav-content-right .link-user {
   text-decoration: none;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
 }
 
@@ -104,9 +109,6 @@ header .logout {
 }
 
 @media screen and (max-width: 1280px) {
-  header .title {
-    font-size: 2vw;
-  }
   header .username {
     font-size: 1vw;
   }

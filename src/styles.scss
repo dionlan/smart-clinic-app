@@ -1,8 +1,8 @@
 @import "./assets/sass/variables";
 
 // Import Bootstrap
-@import "./../node_modules/font-awesome/scss/font-awesome.scss";
 @import "./../node_modules/bootstrap/scss/bootstrap.scss";
+@import "./../node_modules/font-awesome/scss/font-awesome.scss";
 
 // Import Custom SCSS
 @import "./assets/sass/global";
@@ -14,6 +14,7 @@
 
 // Layout
 @import "./assets/sass/layout/dashboard-default";
+@import "./assets/sass/layout/dashboard-fixed";
 
 // Navigation
 @import "./assets/sass/navigation/nav";
