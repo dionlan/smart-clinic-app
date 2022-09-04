@@ -23,6 +23,8 @@
         padding-bottom: 0.75rem;
         position: relative;
         .sb-nav-link-icon {
+          display: flex;
+          justify-content: center;
           font-size: 0.9rem;
         }
         .sb-sidenav-collapse-arrow {

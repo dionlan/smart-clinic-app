@@ -77,11 +77,18 @@ header .username {
 header .logout {
   margin: 0 16px;
   color: #468fb3;
-}*/
+}
 .nav-toggle-left .link-user {
   text-decoration: none;
   color: #fff;
+  width: 5rem;
   cursor: pointer;
+}*/
+.logo{
+  float: left;
+  margin-right: 0.5rem;
+  margin-top: -3px;
+  max-height: 33px;
 }
 
 .nav-content-right {
@@ -92,13 +99,10 @@ header .logout {
   align-items: center;
 }
 
-.nav-content-right div {
-  padding: 10px;
-}
-
 .nav-content-right .link-user {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
   cursor: pointer;
 }
 

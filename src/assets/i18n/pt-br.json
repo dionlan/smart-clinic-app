@@ -33,10 +33,10 @@
   },
   "home": {
     "index": {
-      "breadcrumb": "home"
+      "breadcrumb": "Home"
     },
     "header": {
-      "title": "OMNES",
+      "title": "Omnes",
       "menu": {
         "user-data": "Meus dados",
         "change-password": "Alterar senha",

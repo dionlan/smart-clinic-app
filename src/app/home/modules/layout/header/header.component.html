@@ -1,16 +1,16 @@
 <nav class="sb-topnav navbar navbar-expand navbar-blue">
+  <!-- Navbar Toolbar-->
+  <a class="navbar-brand ps-3" [routerLink]="['/']">{{ "home.header.title" | translate }}
+    <img class="img-fluid logo" src="../../../../../assets/img/smart.png" />
+  </a>
   <!-- Sidebar Toggle-->
   <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" (click)="toggleMenu()">
     <i class="fa fa-bars"></i>
   </button>
-  <!-- Navbar Toolbar-->
-  <div class="nav-toggle-left">
-    <a class="link-user" [routerLink]="['/']">{{ "home.header.title" | translate }}</a>
-  </div>
   <!-- Navbar-->
   <div class="nav-content-right">
       <a class="link-user" [routerLink]="['admin', 'usuarios', 'edita', idUsuario]" >
-        {{ nomeUsuario }}
+        Olá, {{ nomeUsuario }}!
       </a>
     <div>
       <a class="link-user" [routerLink]="['admin', 'usuarios', 'edita', idUsuario]">
