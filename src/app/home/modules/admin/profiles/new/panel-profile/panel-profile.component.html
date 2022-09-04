@@ -4,32 +4,32 @@
         <div  class="col-md-6"  *ngFor="let item of tabs">
             <p-card>
                 <ng-template pTemplate="subtitle">
-                    <div class="text-dark text-center font-weight-bold border rounded bg-light">
+                    <div class="text-blue text-center font-weight-bold border rounded bg-light">
                         {{item.header}}
                     </div>
                 </ng-template>
                 <div class="row" *ngFor="let row of result" >
-                           
+
                     <div >
                         <div *ngIf="(row.key == item.key) && !isAll(item.key)">
                             {{row.value}}
                         </div>
-                        
-                    </div> 
-                   
+
+                    </div>
+
                 </div>
                 <div *ngIf="isAll(item.key)">
                     <div >
                         <span class="pl-2"><strong>{{'home.admin.profiles.form.tab.profile.all.init'|translate}}</strong>
                             {{'home.admin.profiles.form.tab.profile.all.end'|translate}}</span>
-                            
-                    </div>                    
-                </div> 
+
+                    </div>
+                </div>
                 <div *ngIf="isEmpty(item.key)">
                     <span class="pl-2"><strong>{{'home.admin.profiles.form.tab.profile.empty.none'|translate}}</strong>
                         {{'home.admin.profiles.form.tab.profile.empty.end'|translate}}</span>
-                        
-                    </div> 
+
+                    </div>
             </p-card>
         </div>
 

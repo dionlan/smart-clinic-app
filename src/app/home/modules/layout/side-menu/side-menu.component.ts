@@ -1,13 +1,14 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
 import {DOCUMENT} from "@angular/common";
-import { MenuService } from 'src/app/shared/menu/menu.service';
+import {MenuService} from 'src/app/shared/menu/menu.service';
 
 @Component({
   selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.scss'],
 })
+
 export class SideMenuComponent implements OnInit {
   @Input() toggleMenuSubject?:Subject<boolean>;
   mainMenuItems?:any;
@@ -22,7 +23,7 @@ export class SideMenuComponent implements OnInit {
   }
 
   private configureToggleMenu() {
-    this.toggleMenuSubject?.subscribe((toggle) => {
+    this.toggleMenuSubject?.subscribe(() => {
       this.document.body.classList.toggle('sb-sidenav-toggled');
     });
   }
@@ -38,5 +39,4 @@ export class SideMenuComponent implements OnInit {
   setColappsed(id:string) {
     return this.menuService.setColappsed(id);
   }
-
 }

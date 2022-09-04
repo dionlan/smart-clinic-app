@@ -53,6 +53,9 @@
       "clinics": {
         "title": "Clínicas"
       },
+      "affiliates": {
+        "title": "Filiais"
+      },
       "doctors": {
         "title": "Médicos"
       },

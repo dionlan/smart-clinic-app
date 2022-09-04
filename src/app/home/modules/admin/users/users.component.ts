@@ -1,25 +1,23 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Profile } from '../profiles/profile';
 import { ProfilesService } from '../profiles/profiles.service';
 import { SearchParams } from './search-params';
-import { SearchParams as SP } from 'src/app/home/modules/admin/profiles/search-params';
 import { SearchResult } from './search-result';
 import { User } from './user';
 import { UserService } from './users.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from "rxjs";
-import {MessageService, PrimeNGConfig} from "primeng/api";
+import { MessageService, PrimeNGConfig } from "primeng/api";
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { Credentials } from 'src/app/auth/models/credentials.mode';
-
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
+
 export class UsersComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   formReset!: FormGroup;

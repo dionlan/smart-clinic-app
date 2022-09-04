@@ -1,28 +1,25 @@
-// Dark theme for sidenav
-// Append .sb-sidenav-dark to .sb-sidenav to use
+// blue theme for sidenav
+// Append .sb-sidenav-blue to .sb-sidenav to use
 
-.sb-sidenav-dark {
-  background-color: $sidenav-dark-bg;
-  color: $sidenav-dark-color;
+.sb-sidenav-blue {
+  background-color: $sidenav-blue-bg;
+  color: $sidenav-blue-color;
   .sb-sidenav-menu {
-    .sb-sidenav-menu-heading {
-      color: $sidenav-dark-heading-color;
-    }
     .nav-link {
-      color: $sidenav-dark-link-color;
+      color: $sidenav-blue-link-color;
       .sb-nav-link-icon {
-        color: $sidenav-dark-icon-color;
+        color: $sidenav-blue-icon-color;
       }
       .sb-sidenav-collapse-arrow {
-        color: $sidenav-dark-icon-color;
+        color: $sidenav-blue-icon-color;
       }
       &:hover {
-        color: $sidenav-dark-link-active-color;
+        color: $sidenav-blue-link-active-color;
       }
       &.active {
-        color: $sidenav-dark-link-active-color;
+        color: $sidenav-blue-link-active-color;
         .sb-nav-link-icon {
-          color: $sidenav-dark-link-active-color;
+          color: $sidenav-blue-link-active-color;
         }
       }
     }
@@ -39,6 +36,6 @@
     border-radius: 10px;
   }
   .sb-sidenav-footer {
-    background-color: $sidenav-dark-footer-bg;
+    background-color: $sidenav-blue-footer-bg;
   }
 }

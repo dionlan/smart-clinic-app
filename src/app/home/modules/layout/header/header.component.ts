@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Subject } from "rxjs";
 import jwt_decode from 'jwt-decode';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { UserService } from '../../admin/users/users.service';
 
 @Component({
   selector: 'app-header',

@@ -43,7 +43,6 @@ registerLocaleData(ptBr)
     }),
     HomeModule,
     LayoutModule,
-
     NgbModule,
     FontAwesomeModule,
     ToastModule,

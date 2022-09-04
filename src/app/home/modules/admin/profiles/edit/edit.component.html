@@ -1,5 +1,5 @@
 <app-main-panel [title]="'home.admin.profiles.edit.header'"
-icon="fa-users" module="admin" component="profiles" action="edit">
+ module="admin" component="profiles" action="edit"> <!--icon="fa-users"-->
   <section class="new">
     <form (submit)="update()" [formGroup]="form" class="row g-3">
       <input type="hidden" id="inputId" formControlName="id" />

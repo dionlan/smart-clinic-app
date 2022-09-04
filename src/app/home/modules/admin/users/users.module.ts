@@ -9,6 +9,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { EditComponent } from './edit/edit.component';
 import { HomeModule } from 'src/app/home/home.module';
 import { InputSwitchModule } from 'primeng/inputswitch'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [UsersComponent, NewComponent, EditComponent],
@@ -19,7 +20,8 @@ import { InputSwitchModule } from 'primeng/inputswitch'
         TableModule,
         CheckboxModule,
         MultiSelectModule,
-        InputSwitchModule
+        InputSwitchModule,
+        FontAwesomeModule
     ],
 })
 export class UsersModule {}

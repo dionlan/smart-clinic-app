@@ -16,8 +16,13 @@ export const MenuItemsConfig = [
   },
   {
     title: 'home.side-menu.clinics.title',
-    icon: 'pi pi-building',
+    icon: 'fa fa-hospital fa-lg',
     routerLink: ['clinicas']
+  },
+  {
+    title: 'home.side-menu.affiliates.title',
+    icon: 'fa fa-house-medical-circle-check fa-lg',
+    routerLink: ['filiais']
   },
   {
     title: 'home.side-menu.doctors.title',
@@ -26,12 +31,12 @@ export const MenuItemsConfig = [
   },
   {
     title: 'home.side-menu.employees.title',
-    icon: 'fa fa-id-badge fa-lg',
+    icon: 'fa fa-id-card-clip fa-lg',
     routerLink: ['funcionarios'],
   },
   {
     title: 'home.side-menu.patients.title',
-    icon: 'pi pi-user-plus',
+    icon: 'fa fa-bed-pulse fa-lg',
     routerLink: ['pacientes'],
   }
 ];

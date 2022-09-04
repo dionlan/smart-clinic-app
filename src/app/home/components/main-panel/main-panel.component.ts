@@ -29,7 +29,10 @@ export class MainPanelComponent implements OnInit {
 
   @Input()
   footerText?: string;
+
+  @Input()
   loaded: boolean = false;
+
   @Input()
   isSVG: boolean = false;
 

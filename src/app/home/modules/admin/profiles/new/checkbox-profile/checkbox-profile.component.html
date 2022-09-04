@@ -1,23 +1,21 @@
 <div class="card_itens ">
-
   <div class="card-body">
-      <h5 class="card-title">  <div class="text-dark text-center font-weight-bold border rounded bg-light">
+    <h5 class="card-title">
+      <div class="text-blue text-center font-weight-bold border rounded bg-light">
         {{title | translate}}
-    </div> </h5>
-        <div class="container">
-          <div >
-
-            <div *ngFor="let p of permissions" class="row">
-                <div *ngIf="p.controle == controle"  class="col-sm">
-                    <input type="checkbox"
-                    [value]="p.id" (change)="onCbChange($event)"
-                    [checked]="p.checked"/>
-                    {{ p.nome }}
-                </div>
-            </div>
+      </div>
+    </h5>
+    <div class="container">
+      <div>
+        <div *ngFor="let p of permissions" class="row">
+          <div *ngIf="p.controle == controle"  class="col-sm">
+            <input type="checkbox"
+            [value]="p.id" (change)="onCbChange($event)"
+            [checked]="p.checked"/>
+            {{ p.nome }}
+          </div>
         </div>
-        </div>
-
+      </div>
+    </div>
   </div>
-
 </div>

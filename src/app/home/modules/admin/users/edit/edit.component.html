@@ -1,4 +1,4 @@
-<app-main-panel icon="fa-users" module="admin" component="users" action="edit" [title]="'home.admin.users.edit.header'">
+<app-main-panel module="admin" component="users" action="edit" [title]="'home.admin.users.edit.header'">
   <section class="new">
     <form (submit)="update()" [formGroup]="form" class="row g-3">
       <input type="hidden" id="inputId" formControlName="id" />

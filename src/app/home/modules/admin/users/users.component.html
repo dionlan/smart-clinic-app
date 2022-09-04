@@ -1,4 +1,4 @@
-<app-main-panel icon="fa-users" [title]="'home.admin.users.index.header'">
+<app-main-panel icon="fa fa-users" [title]="'home.admin.users.index.header'">
   <section class="new">
     <form (ngSubmit)="search($event)" [formGroup]="form" class="row g-3">
       <div class="col-md-6">
@@ -16,7 +16,7 @@
         <input-feedback [control]="form.get('email')"></input-feedback>
       </div>
 
-      <div class="col-md-12 text-right">
+      <div class="col-md-12 d-flex justify-content-center">
         <button type="button" class="btn btn-outline-primary btn-sm" (click)="reset()">{{ "home.admin.users.search.button.reset" | translate }}</button> &nbsp;
         <button type="submit" class="btn btn-primary btn-sm">
           <i class="fa fa-search"></i> {{ "home.admin.users.search.button.search" | translate }}
@@ -74,7 +74,7 @@
             <td><span class="d-block text-truncate">{{ user.perfilDescricao  }}</span></td>
             <td><span class="d-block text-truncate">{{ user.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span></td>
             <td>
-              <span class="fw-bold d-flex align-items-center justify-content-evenly">
+              <span class="fw-bold d-flex justify-content-evenly">
                 <p-inputSwitch formControlName="switch"></p-inputSwitch>
                 {{
                 user.ativo
@@ -85,9 +85,9 @@
             </td>
             <td>
               <div class="actions">
-                <a class="fa fa-edit button-grid" title="{{
-                    'home.admin.users.table.col.actions.title.edit' | translate
-                  }}" [routerLink]="['/admin', 'usuarios', 'edita', user.id]">
+                <a class="fa fa-edit fa-lg d-flex align-items-center justify-content-evenly"
+                  title="{{ 'home.admin.users.table.col.actions.title.edit' | translate }}"
+                  [routerLink]="['/admin', 'usuarios', 'edita', user.id]">
                 </a>
                 <!-- <a
                   *ngIf="user.ativo"
@@ -139,10 +139,10 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close()">
+      <button type="button" class="btn btn-outline-blue" (click)="modal.close()">
         {{ "home.admin.users.confirm-dialog.button.ok" | translate }}
       </button>
-      <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss()">
+      <button type="button" class="btn btn-outline-blue" (click)="modal.dismiss()">
         {{ "home.admin.users.confirm-dialog.button.cancel" | translate }}
       </button>
     </div>
