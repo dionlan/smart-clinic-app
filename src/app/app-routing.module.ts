@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ErrorPageComponent } from './auth/error-page/error-page.component';
 import { PermitIfAuthenticated } from './auth/permit-authenticated.service';
 import { PermitIfNotAuthenticated } from './auth/permit-not-authenticated.service';
-import { PageNotFoundComponent } from './core/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundComponent
+    component: ErrorPageComponent
   }
 ];
 

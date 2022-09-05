@@ -1,26 +1,35 @@
-<section class="internal-error mb-3">
-  <p class="subtitle mb-3 ">
-    {{ "auth.main.internal-error.subtitle" | translate }}
-  </p>
-  <div class="mb-3">
-    <p>
-      <strong>
-        {{ "auth.main.internal-error.first.text1" | translate }}
-      </strong>
-        {{ "auth.main.internal-error.first.text2" | translate }}
-    </p>
+<div id="layoutError">
+  <div id="layoutError_content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="text-center mt-4">
+            <img class="mb-4 img-error" src="./../../../assets/img/error-404.svg" />
+            <p class="lead">{{ "auth.main.internal-error.subtitle" | translate }}</p>
+            <section class="internal-error mb-2">
+              <div class="mb-2">
+                <p>
+                  <strong>
+                    {{ "auth.main.internal-error.first.text1" | translate }}
+                  </strong>
+                    {{ "auth.main.internal-error.first.text2" | translate }}
+                </p>
+              </div>
+              <div class="mb-2">
+                <p>
+                  {{ "auth.main.internal-error.second.text1" | translate }}
+                  <strong>{{ "auth.main.internal-error.second.text2" | translate }}</strong>
+                </p>
+              </div>
+              <div class="mb-3 mt-2" style="text-align: center;">
+                <button type="button" [routerLink]="['']" class="btn btn-outline-primary btn-sm" style="width: 100%;">
+                  {{ "auth.main.internal-error.back" | translate }}
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="mb-3">
-    <p>
-      {{ "auth.main.internal-error.second.text1" | translate }}
-      <strong>{{ "auth.main.internal-error.second.text2" | translate }}</strong>
-    </p>
-  </div>
-
-  <div class="mb-3 mt-3" style="text-align: center;">
-    <button type="button" [routerLink]="['']" class="btn btn-outline-primary btn-sm" style="width: 100%;">
-      {{ "auth.main.reset-password.back-button" | translate }}
-    </button>
-  </div>
-</section>
+</div>

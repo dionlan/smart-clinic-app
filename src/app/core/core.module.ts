@@ -2,16 +2,16 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ErrorPageComponent } from '../auth/error-page/error-page.component';
 import { LoadingComponent } from '../home/modules/layout/loading/loading.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { LoggingInterceptor } from './interceptors/logging-interceptor';
-import { PageNotFoundComponent } from './page-not-found.component';
 
 const CORE_COMPONENTS = [
   LoadingComponent,
-  PageNotFoundComponent
+  ErrorPageComponent
 ];
 const MODULES = [ RouterModule];
 
